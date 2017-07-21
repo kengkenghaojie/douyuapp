@@ -1,0 +1,135 @@
+page-hello-ionic {
+
+}
+.logo{
+    float: left;
+    margin: .2666666665rem 0 0 .26666667rem;
+    width: 6.1rem;
+    height: 3rem;
+    background-image: url(../assets/images/icon.png);
+    background-size: 16.3333rem 10rem;
+}
+.classification{
+	font-size:1.2rem;
+	display: inline-block;
+    vertical-align: middle;
+    color: #999;
+    padding-left: .35rem
+}
+.ion-md-menu:before {
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+}
+.slides {
+    height: 11.5555555rem;
+}
+.layout-rooms .roomsImg{
+    margin: .87999rem .39999rem 0 .69999rem;
+    width: 1.44rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.layout-rooms .text{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+    color: #333;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-top:.87999rem
+}
+.layout-rooms .title .change {
+    float: right;
+    font-size: 1.04001rem;
+    color: #999;
+    height: 3.36rem;
+    line-height: 3.36rem;
+}
+.layout-rooms .title .change:after {
+    content: " ";
+    float: right;
+    width: 1.44rem;
+    height: 1.44rem;
+    margin: .96rem .39999rem 0;
+    background-image: url(../assets/images/change.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.layout-rooms{
+    background-color: #fff;
+    margin-top: .66666rem;
+}
+.room-online {
+    position: absolute;
+    z-index: 2;
+    top: .8rem;
+    right: .666666rem;
+    color: #fff;
+    font-size: .26667rem;
+}
+.room-online .eye{
+    display: inline-block;
+    vertical-align: middle;
+    width: 1rem;
+}
+.room-nickname{
+    position: absolute;
+    z-index: 2;
+    bottom: 2.22222rem;
+    left: .66666rem;
+    color: #fff;
+    font-size: .26667rem;
+}
+.room-nickname .user,.yz .user{
+    display: inline-block;
+    vertical-align: top;
+    width: 1rem;
+}
+.room-des {
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    font-size: .32rem;
+    color: #333;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.yzname {
+    width:50%;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float:left;
+}
+.yzaddress{
+    float: right;
+    text-align: right;
+    width:50%;
+}
+.yzaddress .address{
+    height: .95rem
+}
+
+
+
+//IOS
+.toolbar-ios ion-title {
+    padding: 0 10px 1px;
+}
+.ion-ios-menu:before {
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+}
+.content-ios {
+    background-color: #eee;
+}
+
+//安卓
+.content-md {
+    background-color: #eee;
+}
