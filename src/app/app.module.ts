@@ -9,6 +9,8 @@ import { liveList } from '../pages/liveList/liveList';
 import { room } from '../pages/room/room';
 import { search } from '../pages/search/search';
 
+import { getDataListService } from '../common/getDataListService';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -34,6 +36,6 @@ import { search } from '../pages/search/search';
     room,
     search
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},getDataListService]
 })
 export class AppModule {}

@@ -1,20 +1,21 @@
 import { Component, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-import { ClassificationService } from "./classificationService";
+//import { ClassificationService } from "./classificationService";
 import { liveList } from '../liveList/liveList';
+import { getDataListService } from '../../common/getDataListService';
 
 @Component({
   selector: 'classification',
   templateUrl: 'classification.html',
-  providers: [ClassificationService]
+  //providers: [ClassificationService]
 })
 export class classification {
   cate1InfoList: any[];
   cate2InfoList: any[];
   liveClass: string;
 
-  constructor(public navCtrl: NavController,private elementRef: ElementRef,public classificationService:ClassificationService) {
+  constructor(public navCtrl: NavController,private elementRef: ElementRef,public classificationService:getDataListService) {
     // If we navigated to this page, we will have an item available as a nav param
     	this.getAllData();
   }
@@ -28,7 +29,7 @@ export class classification {
       }
   };
   getAllData() {
-  	this.classificationService.getClassificationData().subscribe(
+  	this.classificationService.getCommonData("category").subscribe(
       data => {
         console.log(data);
         this.cate1InfoList = data['cate1Info'];
@@ -47,7 +48,7 @@ export class classification {
   	if(cate1Info){
   		navheaderItem[idx+1].classList.add("cur");    //添加class
   		this.liveClass = cate1Info.cate1Name;
-  		this.classificationService.getClassificationData().subscribe(
+  		this.classificationService.getCommonData("category").subscribe(
       data => {
         this.cate2InfoList = data['cate2Info'];
        /* this.cate2InfoList.forEach( (item:any,index:number) => {
@@ -55,22 +56,22 @@ export class classification {
           	this.cate2InfoList.splice(index,1);
           }
   		})*/
-  		
+
        for(let i =0;i<this.cate2InfoList.length+6;i++){					//这里有毒！要这样过滤的！求好的方法
-       
+
        		this.cate2InfoList.forEach( (item:any,index:number) => {
           if(cate1Info.cate1Id !== item.cate1Id){
           	this.cate2InfoList.splice(index,1);
           }
   		})
-       	
+
        }
        //console.log(this.cate2InfoList)
       }
     );
   	}else{
   		navheaderItem[0].classList.add("cur");    //添加class
-  		this.classificationService.getClassificationData().subscribe(
+  		this.classificationService.getCommonData("category").subscribe(
       data => {
         this.cate2InfoList = data['cate2Info'];
         //console.log(this.cate2InfoList)

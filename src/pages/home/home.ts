@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { NavController } from 'ionic-angular';
 
-import { HomeService } from "./homeService";
+//import { HomeService } from "./homeService";
+import { getDataListService } from '../../common/getDataListService';
 import { classification } from '../classification/classification';
 
 import { room } from '../room/room';
@@ -13,7 +14,7 @@ import { search } from '../search/search';
 @Component({
   selector: 'page-hello-ionic',
   templateUrl: 'home.html',
-  providers: [HomeService]
+  //providers: [HomeService]
 })
 export class home {
   indexBanner: any[];
@@ -28,9 +29,9 @@ export class home {
 
   constructor(
   	public navCtrl: NavController,
-  	public homeService:HomeService
+  	public homeService:getDataListService
   ) {
-  	this.homeService.getNews().subscribe(
+  	this.homeService.getCommonData("index/getHomeData").subscribe(
       data => {
         console.log(data);
         //this.todos = data['rows'];
@@ -68,7 +69,7 @@ fenlei() {
     }
   };
    changeI(ii){
-     this.homeService.getNews().subscribe(
+     this.homeService.getCommonData("index/getHomeData").subscribe(
       data => {
         this.hotsList = data["hotList"][ii].data;
       },
@@ -86,7 +87,7 @@ fenlei() {
     console.log('Begin async operation', refresher);
 
     setTimeout(() => {
-      this.homeService.getNews().subscribe(
+      this.homeService.getCommonData("index/getHomeData").subscribe(
         data => {
           console.log(data);
           //this.todos = data['rows'];
