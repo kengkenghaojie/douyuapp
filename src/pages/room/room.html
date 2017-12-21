@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>{{roomData.owner_name}}的直播间</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="video-area">
+    <div class="player">
+        <!-- <video id="dy-video-player" class="video-js" type="application/x-mpegURL" webkit-playsinline="" controls="controls" preload="auto" autoplay="autoplay" [src]="hls_url" style="margin-top: 0px;">
+    <p>您的浏览器不支持 video 标签</p>
+</video> -->
+<video [src]="hls_url" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" width="100%" height="100%" preload="auto"  x-webkit-airplay="true" controls="controls" autoplay="autoplay" class="video-js">
+<p>您的浏览器不支持 video 标签</p>
+</video>
+<!-- <video id="video-player" class="video-js" type="application/x-mpegURL" controls="true">
+            <source [src]="hls_url" type="application/x-mpegURL">
+            <p>您的浏览器不支持 video 标签</p>
+</video> -->
+<div class="poster" style="display: none;"><img [src]="roomData.room_src" id="video-poster">
+    <div class="play-btn"></div>
+    <div class="room-info">
+        <span class="name">{{roomData.room_name}}</span>
+        <span class="class">{{roomData.game_name}}</span>
+    </div>
+    <div class="room-stop-focus">
+        <p class="stop-title">主播正在赶来路上~</p>
+        <p class="stop-tip">赶快关注主播不错过下次开播~</p>
+        <button class="stop-more hd-focus">关注</button>
+    </div>
+</div>
+    </div>
+</div>
+
+<div id="infoArea" class="info-area">
+    <div class="info-room">
+        <img class="dy-photo" [src]="roomData.avatar" alt="">
+        <div class="dy-info">
+            <p class="dy-name-content">主播：<span id="owner_name" class="dy-name">{{roomData.owner_name}}</span></p>
+            <p class="online-content" id="online">
+                共<span class="online">{{roomData.online}}</span>人正在观看
+            </p>
+        </div>
+            </div>
+    <div class="info-handle">
+        <div id="sendBar" class="hd-item hd-send" (click)="showAlert()">
+            <span class="icon"></span>
+            <!-- <img class="icon" src="../assets/images/hd-send.png" alt=""> -->发弹幕
+            <b class="split-line"></b>
+        </div>
+        <div id="focusRoom" class="hd-item hd-focus" (click)="showAlert()">
+        <span class="icon"></span>
+            <!-- <img class="icon" src="../assets/images/hd-focus.png" alt=""> -->关注
+            <b class="split-line"></b>
+        </div>
+        <div id="shareRoom" class="hd-item hd-share" (click)="shareCtrl(1)">
+        <span class="icon"></span>
+            <!-- <img class="icon" src="../assets/images/hd-share.png" alt=""> -->分享
+        </div>
+    </div>
+</div>
+
+<div class="layout-rooms live">
+    <div class="title">
+     <span class="liveIcon"></span>
+      <span class="text">正在直播</span>
+    </div>
+    <ion-grid>
+  <ion-row>
+    <ion-col col-6 *ngFor="let live of cate2InfoList" (click)="toRoom(live)">
+    <span class="room-online">
+      <span class="eye"></span>
+      {{live.online}}
+    </span>
+      <img [src]="live.room_src">
+      <span class="room-nickname">
+      <span class="user"></span>
+     
+      {{live.nickname}}
+      </span>
+      <div class="room-des">{{live.room_name}}</div>
+    </ion-col>
+     <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!bottomTips">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="正在加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <p text-center *ngIf="bottomTips" class="bottomTips">已经到底了</p>
+  </ion-row>
+</ion-grid>
+  </div>
+
+  <div class="c-share open"  *ngIf="share">
+                <div class="share-list" data-share-btn="more">
+                    <a id="weixin" href="javascript:;" data-point-2="1">
+                        <div class="img weixin"></div>
+                        <span>朋友圈</span>
+                    </a>
+                    <a href="javascript:;" target="_blank" data-to="tsina" data-point-2="2">
+                        <div class="img tsina"></div>
+                        <span>微博</span>
+                    </a>
+                    <a href="javascript:;" target="_blank" data-to="cqq" data-point-2="3">
+                        <div class="img qq"></div>
+                        <span>QQ好友</span>
+                    </a>
+                    <a href="javascript:;" target="_blank" data-to="qzone" data-point-2="4">
+                        <div class="img qzone"></div>
+                        <span>QQ空间</span>
+                    </a>
+                </div>
+                <div class="close" (click)="shareCtrl(0)">取 消</div>
+            </div>
+
+</ion-content>

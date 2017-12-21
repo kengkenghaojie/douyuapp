@@ -1,0 +1,46 @@
+<div class="layout-content">
+      <div class="content-block cate" *ngIf="cate">
+         <h2 class="title">分类<i></i><span class="more">分类</span></h2>
+         <div class="content">
+           <a *ngFor="let cate of showSearchListData.cate">
+            <div class="cate-item">
+            <img [src]="cate.icon" [alt]="cate.shortName">
+            <div>{{cate.cate2Name}}</div>
+            </div>
+           </a>
+          
+         </div>
+      </div>
+
+      <div class="content-block anchors" *ngIf="anchor">
+        <h2 class="title">主播<i></i><span class="more">更多</span></h2>
+        <div class="content">
+          <a *ngFor="let anchorItem of showSearchListData.anchor">
+            <div class="anchor-item" [ngClass]="{'phone': anchorItem.isLive==1 && anchorItem.isVertical ==1,'belive': anchorItem.isLive==1}" >
+              <img [src]="anchorItem.avatar" alt="">
+              <p class="nickname">{{anchorItem.nrNickname}}</p>
+              <p class="follow">
+              {{anchorItem.follow}}人关注
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="content-block rooms" *ngIf="live">
+        <h2 class="title">直播<i></i><span class="more">更多</span></h2>
+        <div class="content">
+          <div class="c-room-item" *ngFor="let liveItem of showSearchListData.live">
+            <a>
+             <div class="room-show " [ngClass]="{'islive': liveItem.isLive==1,'phone': liveItem.isLive==1 && liveItem.isVertical ==1}" >
+              <img class="room-pic" [src]="liveItem.roomSrc" alt="" style="">
+              <div class="up-shadow"></div>
+              <span class="room-online">{{liveItem.popularity}}</span>
+              <div class="bottom-shadow"></div>
+              <span class="room-nickname">{{liveItem.nickname}}</span>
+              </div><div class="room-des">{{liveItem.noRed}}</div>
+           </a>
+          </div>
+        </div>
+      </div>
+    </div>
