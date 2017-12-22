@@ -6,12 +6,11 @@ import 'rxjs/add/operator/map';
 import { NavController, NavParams, AlertController, Content } from 'ionic-angular';
 
 
-import { ClassificationService } from "../classification/classificationService";
+import { getDataListService } from '../../common/getDataListService';
 
 @Component({
   selector: 'room',
   templateUrl: 'room.html',
-  providers: [ClassificationService]
 })
 export class room {
   roomData: any;
@@ -25,14 +24,14 @@ export class room {
   constructor(
     public navParams: NavParams,
     private http: Http,
-    public classificationService:ClassificationService,
+    public getdataListService:getDataListService,
     public alertCtrl: AlertController,
 
     ) {
     // If we navigated to this page, we will have an item available as a nav param
 this.roomData = navParams.get('item');
-console.log(this.roomData)
-this.getRoomData().subscribe(
+console.log(this.roomData.room_id)
+this.getdataListService.getRoomData(this.roomData.room_id).subscribe(
       data => {
         //console.log(data);
         this.hls_url = data["data"].hls_url;
@@ -40,7 +39,7 @@ this.getRoomData().subscribe(
       error => {
       }
     );
-this.getRoomAllData().subscribe(
+this.getdataListService.getRoomAllData(this.roomData.room_id).subscribe(
       data => {
         //console.log(data);
         this.roomData = data["data"];
@@ -48,7 +47,7 @@ this.getRoomAllData().subscribe(
       error => {
       }
     );
-this.getRoomAllLive().subscribe(
+this.getdataListService.getRoomAllLive().subscribe(
       data => {
         //console.log(data);
         this.cate2InfoList = data["data"];
@@ -59,36 +58,23 @@ this.cate2InfoList = this.cate2InfoList.slice(0,this.limitNum);
     );
   }
 
-  getRoomData(): Observable<any[]> {
-    return this.http.get("https://m.douyu.com/html5/live?roomId="+ this.roomData.room_id)
-      .map(res => <any[]>res.json())
-  }
-  getRoomAllData(): Observable<any[]> {
-    return this.http.get("http://open.douyucdn.cn/api/RoomApi/room/"+ this.roomData.room_id)
-      .map(res => <any[]>res.json())
-  }
-  //http://open.douyucdn.cn/api/RoomApi/live 
-  getRoomAllLive (): Observable<any[]> {
-    return this.http.get("http://open.douyucdn.cn/api/RoomApi/live")
-      .map(res => <any[]>res.json())
-  };
   doInfinite(infiniteScroll) {
     console.log(this.limitNum)
     if(this.limitNum > 20){
       this.bottomTips = true;
     }else{
       setTimeout(() => {
-      this.getRoomAllLive().subscribe(
+      this.getdataListService.getRoomAllLive().subscribe(
       data => {
         let lodadata = data["data"];
         lodadata = lodadata.slice(this.limitNum,this.limitNum+4);
         this.limitNum = this.limitNum+4;
-        
+
           for(let i=0;i<4;i++){
             this.cate2InfoList.push(lodadata[i]);
           }
-        
-        
+
+
 
       },
       error => {
@@ -97,27 +83,27 @@ this.cate2InfoList = this.cate2InfoList.slice(0,this.limitNum);
       infiniteScroll.complete();
     }, 500);
     }
-    
+
   };
   toRoom(live){
     this.roomData = live;
-    
-    this.getRoomAllData().subscribe(
+
+    this.getdataListService.getRoomAllData(this.roomData.room_id).subscribe(
       data => {
         //console.log(data);
-        this.roomData = data["data"];  
+        this.roomData = data["data"];
       },
       error => {
       }
     );
-    this.getRoomData().subscribe(
+    this.getdataListService.getRoomData(this.roomData.room_id).subscribe(
       data => {
         //console.log(data);
         this.hls_url = data["data"].hls_url;
       },
       error => {
       }
-    );  
+    );
 this.content.scrollToTop();
   }
 
@@ -131,10 +117,10 @@ this.content.scrollToTop();
   }
   shareCtrl(i) {
     if(i == 1){
-      this.share = true  
+      this.share = true
     }else{
-      this.share = false  
+      this.share = false
     }
-    
+
   }
 }

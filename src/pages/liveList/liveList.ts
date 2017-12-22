@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
-import { LiveListService } from "./liveListService";
+//import { LiveListService } from "./liveListService";
+import { getDataListService } from '../../common/getDataListService';
 import { room } from '../room/room';
 
 @Component({
   selector: 'liveList',
   templateUrl: 'liveList.html',
-  providers: [LiveListService]
+  //providers: [LiveListService]
 })
 
 export class liveList {
@@ -17,7 +18,7 @@ liveClass: string;
 serviceName: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public liveListService: LiveListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public liveListService: getDataListService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.shortName = navParams.get('item');
     this.liveClass = navParams.get('liveClass');

@@ -4,8 +4,10 @@ import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 
-const searchListData = 'https://m.douyu.com/search/getTodayTopData?limit=10&isAjax=1';
-const searchKeyData = 'https://m.douyu.com/search/getData?sk=';
+import { searchListData } from '../../utils/constants';
+import { searchKeyData } from '../../utils/constants';
+//const searchListData = 'https://m.douyu.com/search/getTodayTopData?limit=10&isAjax=1';
+//const searchKeyData = 'https://m.douyu.com/search/getData?sk=';
 //https://m.douyu.com/search/getData?sk=aaa&type=1&sort=1&limit=20&offset=0
 /*
  Generated class for the MyFunction provider.

@@ -24,7 +24,7 @@ export class home {
   liveCount: number;
 
   mixList: any[];
-  i: number = /*(Math.random()*4, 10+1)-1; */Math.round(Math.random()*4+1)-1;
+  i: number = 1 //Math.round(Math.random()*4+1)-1 ;
   temporary: number;
 
   constructor(
@@ -61,7 +61,10 @@ fenlei() {
   change() {      //随机改变最热
     this.temporary = this.i
     this.i = Math.round(Math.random()*4+1)-1;
-    if(this.temporary ==this.i || this.i==4){
+    if(this.i == 4){
+      this.i = this.i-1;
+    }
+    if(this.temporary ==this.i){
       this.i = Math.round(Math.random()*4+1)-1;
       this.changeI(this.i);
     }else{
@@ -69,6 +72,7 @@ fenlei() {
     }
   };
    changeI(ii){
+     console.log(ii)
      this.homeService.getCommonData("index/getHomeData").subscribe(
       data => {
         this.hotsList = data["hotList"][ii].data;
