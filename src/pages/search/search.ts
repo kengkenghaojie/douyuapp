@@ -43,8 +43,8 @@ export class search {
     // If we navigated to this page, we will have an item available as a nav param
     this.getLoadSearchData()
   };
-  search(queryWord,type,sort,limit,offset,i) {
-    
+  search(queryWord,type,sort,limit,offset,i) {    //queryWord：搜索内容
+
      if(queryWord == undefined || queryWord == ""){
       this.showLongToast();
       return ;
@@ -58,7 +58,7 @@ export class search {
         this.cur = i;
         this.content.scrollToTop();
       };
-      
+
       if(this.sortContent == "相关度"){
         sort = 1;
         this.sort = 1;
@@ -72,7 +72,7 @@ export class search {
 
       this.type = type;
       this.offset = offset;
-      
+
       this.searchService.showSearchListData(queryWord,type,sort,limit,offset).subscribe(
           data => {
             //抽取公共方法
@@ -83,7 +83,7 @@ export class search {
     );
     }
 
-    //下面的样式，上面是搜索逻辑  
+    //下面的样式，上面是搜索逻辑
     if(!this.searchResult){
         this.scssStyle();
      }
@@ -92,7 +92,7 @@ export class search {
     this.offset = this.offset +20;
     let liveRoomsDataScroll = this.liveRoomsData;
     setTimeout(() => {
-      
+
       this.search(this.queryWord,this.type,this.sort,20,this.offset,i)
 
 
@@ -100,7 +100,7 @@ export class search {
     }, 500);
   };
     searchHot(queryWord,type,sort,limit,offset,i) {
-    
+
       this.queryWord = queryWord;
       this.searchResult = false;
       this.cur = 1;
@@ -112,12 +112,12 @@ export class search {
       error => {
       }
     );
-    
+
     //下面的样式，上面是搜索逻辑
     if(!this.searchResult){
         this.scssStyle();
-     } 
-    
+     }
+
   };
   getLoadSearchData() {
     this.searchService.searchListData().subscribe(
@@ -235,5 +235,8 @@ export class search {
     actionSheet.present();
   };
 
+  imgError(liveItem){     //图片报错的时候自动切换为默认的图片
+    liveItem.roomSrc = "https://shark.douyucdn.cn/app/douyu-mobile/m-douyu-react/build/images/public/list-item-def-thumb.gif";
+  };
 
 }
