@@ -67,7 +67,7 @@
       </div>
 
       <div class="content-block anchors" *ngIf="anchor">
-        <h2 class="title">主播<i></i><span class="more" (click)="search(queryWord,2,1,20,0,2)">更多</span></h2>
+        <h2 class="title">主播<i></i><span class="more" (click)="search(queryWord,4,1,20,0,3)">更多</span></h2>
         <div class="content">
           <a *ngFor="let anchorItem of showSearchListData.anchor" (click)="toRoom(anchorItem)">
             <div class="anchor-item" [ngClass]="{'phone': anchorItem.isLive==1 && anchorItem.isVertical ==1,'belive': anchorItem.isLive==1}" >
@@ -82,7 +82,7 @@
       </div>
 
       <div class="content-block rooms" *ngIf="live">
-        <h2 class="title">直播<i></i><span class="more" (click)="search(queryWord,4,1,20,0,3)">更多</span></h2>
+        <h2 class="title">直播<i></i><span class="more" (click)="search(queryWord,2,1,20,0,2)">更多</span></h2>
         <div class="content">
           <div class="c-room-item" *ngFor="let liveItem of showSearchListData.live" (click)="toRoom(liveItem)">
             <a>
