@@ -1,19 +1,29 @@
 <!-- <ion-menu type="overlay" side="right" [content]="content">
 
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Pages</ion-title>
-    </ion-toolbar>
-  </ion-header>
+   &lt;!&ndash;<ion-header>
+     <ion-toolbar>
+       <ion-title>Menu</ion-title>
+     </ion-toolbar>
+   </ion-header>
+   <ion-content>
+     <ion-list>
+       <button ion-item (click)="search()">
+         搜索
+       </button>
+       <button ion-item (click)="fenlei()">
+         分类
+       </button>
+       <button ion-item >
+         Events
+       </button>
+       <button ion-item >
+         Close Menu
+       </button>
+     </ion-list>
+   </ion-content>&ndash;&gt;
+   <homeMenu></homeMenu>
 
-  <ion-content>
-    <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
 
-</ion-menu>
- -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+ </ion-menu>-->
+<!--<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>-->
+<ion-nav [root]="rootPage"></ion-nav>

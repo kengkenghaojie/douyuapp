@@ -202,6 +202,9 @@ page-hello-ionic {
 .bar-button-ios {
   float: left;
 }
+.ios .menu-content-reveal {
+  box-shadow: none;
+}
 
 //安卓
 .content-md {

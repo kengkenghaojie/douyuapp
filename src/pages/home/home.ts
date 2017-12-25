@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { NavController } from 'ionic-angular';
+import { NavController,MenuController  } from 'ionic-angular';
 
 //import { HomeService } from "./homeService";
 import { getDataListService } from '../../common/getDataListService';
@@ -29,7 +29,8 @@ export class home {
 
   constructor(
   	public navCtrl: NavController,
-  	public homeService:getDataListService
+  	public homeService:getDataListService,
+    public menuCtrl: MenuController
   ) {
   	this.homeService.getCommonData("index/getHomeData").subscribe(
       data => {
@@ -46,11 +47,12 @@ export class home {
       }
     );
   }
-
 fenlei() {
+  this.menuCtrl.close();
     this.navCtrl.push(classification);   //跳转到分类
   };
   search() {
+    this.menuCtrl.close();
     this.navCtrl.push(search);
   };
   toRoom(hot) {

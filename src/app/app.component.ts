@@ -20,12 +20,12 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    public menu: MenuController
+    public menu: MenuController,
   ) {
     this.initializeApp();
 
     // set our app's pages
-   
+
   }
 
   initializeApp() {
@@ -36,6 +36,6 @@ export class MyApp {
       Splashscreen.hide();
     });
   }
-  
-  
+
+
 }
