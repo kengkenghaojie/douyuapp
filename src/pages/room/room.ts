@@ -7,10 +7,12 @@ import { NavController, NavParams, AlertController, Content } from 'ionic-angula
 
 
 import { getDataListService } from '../../common/getDataListService';
+import { searchService } from "../search/searchService";
 
 @Component({
   selector: 'room',
   templateUrl: 'room.html',
+  providers: [searchService]
 })
 export class room {
   roomData: any;
@@ -19,6 +21,11 @@ export class room {
   limitNum:number = 8;
   share:boolean = false;
   bottomTips:boolean = false;
+  queryWord:string;
+  type:number=2;
+  sort:number=1;
+  limit:number=20;
+  offset:number=0;
    @ViewChild(Content) content: Content;
 
   constructor(
@@ -26,11 +33,11 @@ export class room {
     private http: Http,
     public getdataListService:getDataListService,
     public alertCtrl: AlertController,
-
+    public searchService: searchService,
     ) {
     // If we navigated to this page, we will have an item available as a nav param
 this.roomData = navParams.get('item');
-console.log(this.roomData.room_id)
+    this.queryWord = this.roomData.tag_name;
 this.getdataListService.getRoomData(this.roomData.room_id).subscribe(
       data => {
         //console.log(data);
@@ -47,7 +54,7 @@ this.getdataListService.getRoomAllData(this.roomData.room_id).subscribe(
       error => {
       }
     );
-this.getdataListService.getRoomAllLive().subscribe(
+/*this.getdataListService.getRoomAllLive().subscribe(
       data => {
         //console.log(data);
         this.cate2InfoList = data["data"];
@@ -55,12 +62,33 @@ this.cate2InfoList = this.cate2InfoList.slice(0,this.limitNum);
       },
       error => {
       }
-    );
-  }
+    );*/
 
+    this.getSameListData()
+  }
+  getSameListData(){
+    this.searchService.showSearchListData(this.queryWord,this.type,this.sort,this.limit,this.offset).subscribe(
+      data => {
+        //抽取公共方法
+        //console.log(data["live"])
+        if(this.cate2InfoList == undefined){
+          this.cate2InfoList = data["live"];
+        }else {
+          console.log(data["live"].length)
+          //this.cate2InfoList = this.cate2InfoList + data["live"];
+          //this.cate2InfoList.push(data["live"])
+          data["live"].forEach((item,index)=>{
+            this.cate2InfoList.push(item)
+          })
+        }
+      },
+      error => {
+      }
+    );
+  };
   doInfinite(infiniteScroll) {
-    console.log(this.limitNum)
-    if(this.limitNum > 20){
+    //console.log(this.limitNum)
+   /* if(this.limitNum > 20){
       this.bottomTips = true;
     }else{
       setTimeout(() => {
@@ -82,8 +110,15 @@ this.cate2InfoList = this.cate2InfoList.slice(0,this.limitNum);
     );
       infiniteScroll.complete();
     }, 500);
-    }
+    }*/
+    this.offset = this.offset +20;
+    setTimeout(() => {
 
+      this.getSameListData()
+
+
+      infiniteScroll.complete();
+    }, 500);
   };
   toRoom(live){
     this.roomData = live;

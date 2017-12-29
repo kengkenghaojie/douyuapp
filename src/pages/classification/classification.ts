@@ -83,7 +83,8 @@ export class classification {
   	this.navCtrl.push(liveList, {
       item: cate2Info,
       liveClass: this.liveClass,
-      shortName: cate2Info.shortName
+      shortName: cate2Info.shortName,
+      cate_id : cate2Info.cate2Id
     });
   }
 }

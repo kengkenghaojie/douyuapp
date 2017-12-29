@@ -16,6 +16,7 @@ shortName: any;
 liveList: any[];
 liveClass: string;
 serviceName: string;
+  cateId:string;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public liveListService: getDataListService) {
@@ -23,15 +24,15 @@ serviceName: string;
     this.shortName = navParams.get('item');
     this.liveClass = navParams.get('liveClass');
     this.serviceName = navParams.get('shortName');
-
-    console.log(this.shortName)
+    this.cateId = navParams.get('cate_id');
+    console.log(this.cateId)
 
     if(this.liveClass == undefined){
     	this.liveClass = this.shortName.cate2Name
     }
 
     if(this.liveClass != "" && this.liveClass != ""){
-      this.getNameData(this.serviceName);
+      this.getNameData(this.cateId);
     }else{
       this.getAllData();
       this.liveClass = "全部直播";

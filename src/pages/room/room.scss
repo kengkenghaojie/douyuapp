@@ -193,7 +193,7 @@
     border-top: .02666667rem solid #eee;
     font-size: .37333333rem;
     overflow: hidden;
-    
+
     z-index: 4;
 }
 
@@ -256,4 +256,14 @@
 .bottomTips{
     width:100%;
     color:#666;
+}
+.roomDetail{
+  [col-6] {
+    height: 10.0999rem;
+    overflow: hidden;
+    img{
+      height: 8rem;
+      width: 100%;
+    }
+  }
 }

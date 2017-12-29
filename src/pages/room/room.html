@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<div class="layout-rooms live">
+<div class="layout-rooms live roomDetail">
     <div class="title">
      <span class="liveIcon"></span>
       <span class="text">正在直播</span>
@@ -72,13 +72,13 @@
       <span class="eye"></span>
       {{live.online}}
     </span>
-      <img [src]="live.room_src">
+      <img [src]="live.roomSrc">
       <span class="room-nickname">
       <span class="user"></span>
-     
+
       {{live.nickname}}
       </span>
-      <div class="room-des">{{live.room_name}}</div>
+      <div class="room-des">{{live.nickname}}</div>
     </ion-col>
      <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!bottomTips">
     <ion-infinite-scroll-content

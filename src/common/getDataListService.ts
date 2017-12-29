@@ -21,7 +21,7 @@ export class getDataListService {
   };
   //这2个是获取liveList的数据  （还没有优化成一个方法）
   liveListData(serviceName): Observable<any[]> {
-    return this.http.get(douyutvUrl+serviceName)
+    return this.http.get(douyucdnUrl+serviceName)
       .map(res => <any[]>res.json())
   };
   liveAllListData(): Observable<any[]> {
@@ -38,6 +38,7 @@ export class getDataListService {
       .map(res => <any[]>res.json())
   }
   getRoomAllLive (): Observable<any[]> {
+    console.log(douyucdnUrl)
     return this.http.get(douyucdnUrl)
       .map(res => <any[]>res.json())
   };
