@@ -17,30 +17,30 @@ export class getDataListService {
   constructor(private http: Http, public httpService: HttpService) { }
 
   getCommonData(urlPath): Observable<any[]> {
-    return this.http.get(douyuUrl + urlPath)
+    return this.httpService.get(douyuUrl + urlPath)
       .map(res => res.json())  //map的返回就是原本的数据类型
   };
   //这2个是获取liveList的数据  （还没有优化成一个方法）
   liveListData(serviceName): Observable<any[]> {
-    return this.http.get(douyucdnUrl+serviceName)
+    return this.httpService.get(douyucdnUrl+serviceName)
       .map(res => <any[]>res.json())
   };
   liveAllListData(): Observable<any[]> {
-    return this.http.get(douyucdnUrl)
+    return this.httpService.get(douyucdnUrl)
       .map(res => <any[]>res.json())
   };
   getRoomData(val): Observable<any[]> {
     console.log(roomData+ val)
-    return this.http.get(roomData+ val)
+    return this.httpService.get(roomData+ val)
       .map(res => <any[]>res.json())
   }
   getRoomAllData(roomId): Observable<any[]> {
-    return this.http.get(roomsData+ roomId)
+    return this.httpService.get(roomsData+ roomId)
       .map(res => <any[]>res.json())
   }
   getRoomAllLive (): Observable<any[]> {
     console.log(douyucdnUrl)
-    return this.http.get(douyucdnUrl)
+    return this.httpService.get(douyucdnUrl)
       .map(res => <any[]>res.json())
   };
 

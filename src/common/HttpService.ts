@@ -12,70 +12,150 @@ export class HttpService {
 
   count: number = 0;//记录未完成的请求数量
 
-  public request(url: string, options: RequestOptionsArgs): Observable<Response> {
-    console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
-    return Observable.create(observer => {
-      console.log("成功创建订阅")
-      this.http.request(url, options).subscribe(res => {
-        console.log("进入分发",res)
-         let result = this.requestSuccessHandle(url, options, res);
-        console.log("返回成功的东西",result)
-         result.success ? observer.next(result.data) : observer.error(result.data);
-      }, err => {
-        console.log(err)
-        observer.error(this.requestFailedHandle(url, options, err));
-      });
-    });
-  }
+  private begin() {
+    console.time('http');
+    console.log("开始")
+}
+private end() {
+  console.timeEnd("end");
+  console.log("结束")
+}
+
+  // public request(url: string, options: RequestOptionsArgs): Observable<Response> {
+  //   console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
+  //   return Observable.create(observer => {
+  //     console.log("成功创建订阅")
+  //     this.http.request(url, options).subscribe(res => {
+  //       console.log("进入分发",res)
+  //        let result = this.requestSuccessHandle(url, options, res);
+  //       console.log("返回成功的东西",result)
+  //       observer.next(result.data)
+  //        //result.success ? observer.next(result.data) : observer.error(result.data);
+  //     }, err => {
+  //       console.log(err)
+  //       observer.error(this.requestFailedHandle(url, options, err));
+  //     });
+  //   });
+  // }
 
   public get(url: string, paramMap: any = null): Observable<any> {
+    
+    // return this.request(url, new RequestOptions({
+    //   method: RequestMethod.Get,
+    //   search: HttpService.buildURLSearchParams(paramMap)
+    // }));
+    this.begin();
     console.log("get",url)
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Get,
-      search: HttpService.buildURLSearchParams(paramMap)
-    }));
+    return this.http
+            .get(url)
+            .do(() => {this.end();})
+            .catch((res) => {
+                console.warn(res,'jjjj')
+                this.end();
+                return res;
+            });
   }
 
-  public post(url: string, body: any = {}): Observable<any> {
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Post,
-      body: body,
-      headers: new Headers({
-        'Content-Type': 'application/json; charset=UTF-8'
-      })
-    }));
+ /**
+     * POST请求
+     *
+     * @param {string} url URL地址
+     * @param {*} [body] body内容
+     * @param {*} [params] 请求参数
+     */
+    post(url: string, body?: any, params?: any): Observable<any> {
+      this.begin();
+      return this.http
+          // .post(url, body || null, {
+          //     params: this.parseParams(params)
+          // })
+          .post(url, body || null, params)
+          .do(() => this.end())
+          .catch((res) => {
+              this.end();
+              return res;
+          });
   }
 
-  public postFormData(url: string, paramMap: any = null): Observable<any> {
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Post,
-      body: HttpService.buildURLSearchParams(paramMap).toString(),
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      })
-    }));
+  /**
+   * DELETE请求
+   *
+   * @param {string} url URL地址
+   * @param {*} [params] 请求参数
+   */
+  delete(url: string, params?: any): Observable<any> {
+      this.begin();
+      return this.http
+          // .delete(url, {
+          //     params: this.parseParams(params)
+          // })
+          .delete(url,params)
+          .do(() => this.end())
+          .catch((res) => {
+              this.end();
+              return res;
+          });
   }
 
-  public put(url: string, body: any = {}): Observable<any> {
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Put,
-      body: body
-    }));
+  /**
+   * Request请求
+   *
+   * @param {string} url URL地址
+   * @param {*} [params] 请求参数
+   */
+  request(method:string, url: string,body ?:any, params?: any): Observable<any> {
+      this.begin();
+      return this.http
+          // .request(method,url, {
+          //     body:body ,
+          //     params: this.parseParams(params)
+          // })
+          .request(url, params)
+          .do(() => this.end())
+          .catch((res) => {
+              this.end();
+              return res;
+          });
   }
 
-  public delete(url: string, paramMap: any = null): Observable<any> {
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Delete,
-      search: HttpService.buildURLSearchParams(paramMap).toString()
-    }));
+  /**
+   * PUT请求
+   *
+   * @param {string} url URL地址
+   * @param {*} [body] body内容
+   * @param {*} [params] 请求参数
+   */
+  put(url: string, body?: any, params?: any): Observable<any> {
+
+      this.begin();
+      return this.http
+          // .put(url, body || null, {
+          //     params: this.parseParams(params)
+          // })
+          .put(url, body || null, params)
+          .do(() => this.end())
+          .catch((res) => {
+              this.end();
+              return res;
+          });
   }
 
-  public patch(url: string, body: any = {}): Observable<any> {
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Patch,
-      body: body
-    }));
-  }
+//   parseParams(params: any): HttpParams {
+//     let ret = new HttpParams();
+//     if (params) {
+//         // tslint:disable-next-line:forin
+//         for (const key in params) {
+//             let _data = params[key];
+//             // 将时间转化为：时间戳 (秒)
+//             if (moment.isDate(_data)) {
+//                 _data = moment(_data).unix();
+//             }
+//             ret = ret.set(key, _data);
+//         }
+//     }
+//     return ret;
+// }
+
 
 
   /**
@@ -143,4 +223,6 @@ export class HttpService {
     //}
     return err;
   }
+
+  
 }

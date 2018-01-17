@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { searchListData } from '../../utils/constants';
 import { searchKeyData } from '../../utils/constants';
+import {HttpService} from "../../common/HttpService";
 //const searchListData = 'https://m.douyu.com/search/getTodayTopData?limit=10&isAjax=1';
 //const searchKeyData = 'https://m.douyu.com/search/getData?sk=';
 //https://m.douyu.com/search/getData?sk=aaa&type=1&sort=1&limit=20&offset=0
@@ -18,10 +19,10 @@ import { searchKeyData } from '../../utils/constants';
 @Injectable()
 export class searchService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, public httpService: HttpService) { }
 
   searchListData(): Observable<any[]> {
-    return this.http.get(searchListData)
+    return this.httpService.get(searchListData)
       .map(res => <any[]>res.json())
   };
   showSearchListData(sk:string,type:number, sort:number, limit:number, offset:number ): Observable<any[]> {
@@ -30,7 +31,7 @@ export class searchService {
   	console.log("sort",sort);
   	console.log("limit",limit);
   	console.log("offset",offset);*/
-    return this.http.get(searchKeyData + sk +"&type=" + type +"&sort=" +sort+"&limit="+limit+"&offset="+offset)
+    return this.httpService.get(searchKeyData + sk +"&type=" + type +"&sort=" +sort+"&limit="+limit+"&offset="+offset)
       .map(res => <any[]>res.json())
   };
 
