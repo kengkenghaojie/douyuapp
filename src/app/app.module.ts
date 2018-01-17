@@ -12,6 +12,7 @@ import { search } from '../pages/search/search';
 import { getDataListService } from '../common/getDataListService';
 
 import { homeModule }     from '../pages/home/home.module';
+import {HttpService} from "../common/HttpService";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,6 @@ import { homeModule }     from '../pages/home/home.module';
     room,
     search
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},getDataListService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},getDataListService,HttpService]
 })
 export class AppModule {}

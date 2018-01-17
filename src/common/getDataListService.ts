@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http,Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
@@ -9,15 +9,16 @@ import { douyutvUrl } from '../utils/constants';
 import { douyucdnUrl } from '../utils/constants';
 import { roomData } from '../utils/constants';
 import { roomsData } from '../utils/constants';
+import {HttpService} from "./HttpService";
 
 @Injectable()
 export class getDataListService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, public httpService: HttpService) { }
 
   getCommonData(urlPath): Observable<any[]> {
     return this.http.get(douyuUrl + urlPath)
-      .map(res => <any[]>res.json())  //map的返回就是原本的数据类型
+      .map(res => res.json())  //map的返回就是原本的数据类型
   };
   //这2个是获取liveList的数据  （还没有优化成一个方法）
   liveListData(serviceName): Observable<any[]> {
