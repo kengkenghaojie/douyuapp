@@ -1,19 +1,27 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title text-center>搜索</ion-title>
-  </ion-navbar>
+<!--
+  Generated template for the SearchPage page.
 
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>搜索</ion-title>
+  </ion-navbar>
+  <div class="layout-header">
+    <input type="text" placeholder="搜索房间/主播/分类" [(ngModel)]="queryWord">
+    <button (click)="search(queryWord,type,sort,limit,offset)">搜索</button>
+  </div>
 </ion-header>
+
 
 <ion-content>
   <div class="search-app" [hidden]="!searchResult" >
-    <div class="layout-header">
+    <!--<div class="layout-header">
       <input type="text" placeholder="搜索房间/主播/分类" [(ngModel)]="queryWord">
       <button (click)="search(queryWord,type,sort,limit,offset)">搜索</button>
-    </div>
+    </div>-->
     <div class="layout-content">
       <h3 class="hot-title">最近热搜</h3>
       <div class="hot-content">
@@ -27,14 +35,10 @@
         </ion-grid>
       </div>
     </div>
-
   </div>
 
   <div class="search-result-app" [hidden]="searchResult" >
-    <div class="layout-header">
-      <input type="text" id="js-search-text" placeholder="搜索房间/主播/分类" [(ngModel)]="queryWord">
-      <button (click)="search(queryWord,type,sort,limit,offset)">搜索</button>
-    </div>
+
 
     <div class="layout-control">
       <div data-type="1" class="item" [ngClass]="{'cur': cur==1}" (click)="search(queryWord,1,1,20,0,1)">全部</div>
@@ -54,16 +58,16 @@
     <!-- 全部 -->
     <div class="layout-content" [hidden]="!all">
       <div class="content-block cate" *ngIf="cate">
-         <h2 class="title">分类<i></i></h2>
-         <div class="content">
-           <a *ngFor="let cate of showSearchListData.cate" (click)="toLiveList($event, cate)">
+        <h2 class="title">分类<i></i></h2>
+        <div class="content">
+          <a *ngFor="let cate of showSearchListData.cate" (click)="toLiveList($event, cate)">
             <div class="cate-item">
-            <img [src]="cate.icon" [alt]="cate.shortName">
-            <div>{{cate.cate2Name}}</div>
+              <img [src]="cate.icon" [alt]="cate.shortName">
+              <div>{{cate.cate2Name}}</div>
             </div>
-           </a>
+          </a>
 
-         </div>
+        </div>
       </div>
 
       <div class="content-block anchors" *ngIf="anchor">
@@ -74,7 +78,7 @@
               <img [src]="anchorItem.avatar" alt="">
               <p class="nickname">{{anchorItem.nrNickname}}</p>
               <p class="follow">
-              {{anchorItem.follow}}人关注
+                {{anchorItem.follow}}人关注
               </p>
             </div>
           </a>
@@ -86,14 +90,14 @@
         <div class="content">
           <div class="c-room-item" *ngFor="let liveItem of showSearchListData.live" (click)="toRoom(liveItem)">
             <a>
-             <div class="room-show " [ngClass]="{'islive': liveItem.isLive==1,'phone': liveItem.isLive==1 && liveItem.isVertical ==1}" >
-              <img class="room-pic" [src]="liveItem.roomSrc" alt="" style="" (error)="imgError(liveItem)">
-              <div class="up-shadow"></div>
-              <span class="room-online">{{liveItem.popularity}}</span>
-              <div class="bottom-shadow"></div>
-              <span class="room-nickname">{{liveItem.nickname}}</span>
+              <div class="room-show " [ngClass]="{'islive': liveItem.isLive==1,'phone': liveItem.isLive==1 && liveItem.isVertical ==1}" >
+                <img class="room-pic" [src]="liveItem.roomSrc" alt="" style="" (error)="imgError(liveItem)">
+                <div class="up-shadow"></div>
+                <span class="room-online">{{liveItem.popularity}}</span>
+                <div class="bottom-shadow"></div>
+                <span class="room-nickname">{{liveItem.nickname}}</span>
               </div><div class="room-des">{{liveItem.noRed}}</div>
-           </a>
+            </a>
           </div>
         </div>
       </div>
@@ -102,57 +106,57 @@
     <!-- 直播 -->
     <div class="layout-content" *ngIf="liveRooms">
       <div class="content-block content-block-live">
-       <div class="c-room-item c-room-item-live" *ngFor="let liveRoom of liveRoomsData.live" (click)="toRoom(liveRoom)">
-         <a>
-             <div class="room-show " [ngClass]="{'islive': liveRoom.isLive==1,'phone': liveRoom.isLive==1 && liveRoom.isVertical ==1}">
+        <div class="c-room-item c-room-item-live" *ngFor="let liveRoom of liveRoomsData.live" (click)="toRoom(liveRoom)">
+          <a>
+            <div class="room-show " [ngClass]="{'islive': liveRoom.isLive==1,'phone': liveRoom.isLive==1 && liveRoom.isVertical ==1}">
               <img class="room-pic" [src]="liveRoom.roomSrc" alt="" style="" (error)="imgError(liveRoom)">
               <div class="up-shadow"></div>
               <span class="room-online">{{liveRoom.follow}}</span>
               <div class="bottom-shadow"></div>
               <span class="room-nickname">{{liveRoom.nickname}}</span>
-              </div><div class="room-des">{{liveRoom.noRed}}</div>
-           </a>
-      </div>
-      <ion-infinite-scroll (ionInfinite)="doInfinite($event,4)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="正在加载更多数据...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+            </div><div class="room-des">{{liveRoom.noRed}}</div>
+          </a>
+        </div>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event,4)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="正在加载更多数据...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
       </div>
     </div>
     <!-- 主播 -->
 
     <div class="layout-content" *ngIf="liveAnchors">
-    <div class="content-block anchors only">
-    <div class="anchorContent" *ngFor="let anchorItem of liveRoomsData.anchor" (click)="toRoom(anchorItem)">
-    <a>
-        <div class="anchor-item">
-          <img [src]="anchorItem.avatar" alt="" (error)="imgError(anchorItem)">
-           <div class="down-line">
-             <p class="nickname">
-              <span class="name">{{anchorItem.nrNickname}}</span>
-              <span [ngClass]="{'belive': anchorItem.isLive==1}"></span>
-            </p>
-            <p class="follow">
+      <div class="content-block anchors only">
+        <div class="anchorContent" *ngFor="let anchorItem of liveRoomsData.anchor" (click)="toRoom(anchorItem)">
+          <a>
+            <div class="anchor-item">
+              <img [src]="anchorItem.avatar" alt="" (error)="imgError(anchorItem)">
+              <div class="down-line">
+                <p class="nickname">
+                  <span class="name">{{anchorItem.nrNickname}}</span>
+                  <span [ngClass]="{'belive': anchorItem.isLive==1}"></span>
+                </p>
+                <p class="follow">
               <span>
                  观看人数：{{anchorItem.popularity}}
                </span>
-               <span>
+                  <span>
                   关注人数：{{anchorItem.follow}}
                 </span>
-            </p>
-          </div>
+                </p>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
         <ion-infinite-scroll (ionInfinite)="doInfinite($event,5)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="正在加载更多数据...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-    </div>
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="正在加载更多数据...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
 
     </div>
   </div>

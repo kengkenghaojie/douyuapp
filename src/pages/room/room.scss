@@ -1,32 +1,33 @@
-.video-area {
+page-room {
+  .video-area {
     width: 100%;
     position: fixed;
     z-index: 1111;
     background-color: black;
-}
-.video-area .player {
+  }
+  .video-area .player {
     position: relative;
     width: 100%;
     height: 18.33333333rem;
     overflow: hidden;
-}
-.video-area .player .video-js {
+  }
+  .video-area .player .video-js {
     width: 100%;
     height: 100%;
-}
-.video-area .player .poster {
+  }
+  .video-area .player .poster {
     position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
     background-color: #000;
-}
-.video-area .player .poster img {
+  }
+  .video-area .player .poster img {
     width: 100%;
     pointer-events: none;
-}
-.video-area .player .poster .play-btn {
+  }
+  .video-area .player .poster .play-btn {
     display: block;
     position: absolute;
     left: 4.46666667rem;
@@ -34,8 +35,8 @@
     width: 1.06666667rem;
     height: 1.06666667rem;
     background-position: -2.13333333rem 0;
-}
-.video-area .player .room-info {
+  }
+  .video-area .player .room-info {
     position: absolute;
     width: 100%;
     height: 2.4rem;
@@ -46,8 +47,8 @@
     background: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.1) 30%,rgba(0,0,0,.8) 100%);
     background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.1) 30%,rgba(0,0,0,.8) 100%);
     background: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.1) 30%,rgba(0,0,0,.8) 100%);
-}
-.video-area .player .room-info .name {
+  }
+  .video-area .player .room-info .name {
     display: block;
     float: left;
     margin-left: .70000001rem;
@@ -56,8 +57,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
     color: #fff;
-}
-.video-area .player .room-info .class {
+  }
+  .video-area .player .room-info .class {
     display: block;
     float: right;
     margin-right: .26666667rem;
@@ -67,8 +68,8 @@
     overflow: hidden;
     color: #f70;
     text-align: right;
-}
-.video-area .player .poster .room-stop-focus {
+  }
+  .video-area .player .poster .room-stop-focus {
     display: none;
     position: absolute;
     width: 10rem;
@@ -76,17 +77,17 @@
     text-align: center;
     top: 0;
     background-color: rgba(0,0,0,.5);
-}
-.video-area .player .poster .room-stop-focus .stop-title {
+  }
+  .video-area .player .poster .room-stop-focus .stop-title {
     font-size: .53333333rem;
     color: #fff;
     margin-top: 1.3rem;
-}
-.video-area .player .poster .room-stop-focus .stop-tip {
+  }
+  .video-area .player .poster .room-stop-focus .stop-tip {
     font-size: .37333333rem;
     color: #CCC;
-}
-.video-area .player .poster .room-stop-focus .stop-more {
+  }
+  .video-area .player .poster .room-stop-focus .stop-more {
     width: 3.73333333rem;
     height: 1.12rem;
     border-radius: 1.06666667rem;
@@ -96,49 +97,49 @@
     color: #fff;
     margin: .45333333rem 0;
     outline: 0;
-}
+  }
 
-.info-area {
+  .info-area {
     height: 9.06666667rem;
     background-color: #fff;
     padding: 0 .99999999rem;
     margin-top:19rem;
-}
-.info-area .info-room {
+  }
+  .info-area .info-room {
     height: 4.8800000001rem;
-}
-.info-area .info-handle {
+  }
+  .info-area .info-handle {
     white-space: nowrap;
-}
-.info-area .info-room .dy-photo {
+  }
+  .info-area .info-room .dy-photo {
     width: 3.333333333rem;
     height: 3.3333333rem;
     vertical-align: top;
     margin-top: .96rem;
     border-radius: .53333333rem;
-}
-.info-area .info-room .dy-info {
+  }
+  .info-area .info-room .dy-info {
     display: inline-block;
     margin-top: .96rem;
     padding-left: .399999999rem;
     line-height: 1.599999999rem;
-}
-.info-area .info-room .dy-info .dy-name-content {
+  }
+  .info-area .info-room .dy-info .dy-name-content {
     color: #333;
     font-size: .37333333rem;
     max-width: 14.96rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;margin: 0;
-}
-.info-area .info-room .dy-info .online-content {
+  }
+  .info-area .info-room .dy-info .online-content {
     color: #666;
     font-size: .96rem;margin: 0;
-}
-.info-area .info-room .dy-info .online-content .online {
+  }
+  .info-area .info-room .dy-info .online-content .online {
     color: #fa7221;
-}
-.info-area .info-handle .hd-item {
+  }
+  .info-area .info-handle .hd-item {
     position: relative;
     display: inline-block;
     width: 33.3333333%;
@@ -147,31 +148,31 @@
     color: #666;
     font-size: 1.01999999rem;
     text-indent: -.5555555rem;
-}
-.info-area .info-handle .hd-item .icon {
+  }
+  .info-area .info-handle .hd-item .icon {
     width: 2rem;
     height: 1.8rem;
     vertical-align: top;
     margin-top: 1.1rem;
     background: 0 0;
     display: inline-block;
-}
-.info-area .info-handle .hd-send .icon{
+  }
+  .info-area .info-handle .hd-send .icon{
     background-image: url(../assets/images/hd-send.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.info-area .info-handle .hd-focus .icon{
+  }
+  .info-area .info-handle .hd-focus .icon{
     background-image: url(../assets/images/hd-focus.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.info-area .info-handle .hd-share .icon{
+  }
+  .info-area .info-handle .hd-share .icon{
     background-image: url(../assets/images/hd-share.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.info-area .info-handle .hd-item .split-line {
+  }
+  .info-area .info-handle .hd-item .split-line {
     position: absolute;
     top: 1.280000001rem;
     right: 0;
@@ -179,9 +180,9 @@
     height: 1.760000001rem;
     width: 1px;
     background-color: #DDD;
-}
+  }
 
-.c-share {
+  .c-share {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -195,9 +196,9 @@
     overflow: hidden;
 
     z-index: 4;
-}
+  }
 
-.c-share .share-list {
+  .c-share .share-list {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -209,33 +210,33 @@
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-}
-.c-share .share-list a {
+  }
+  .c-share .share-list a {
     display: inline-block;
     margin: 0 1.2rem;
     width: 25%;
-}
-.c-share .share-list a div.img {
+  }
+  .c-share .share-list a div.img {
     display: block;
     width: 5.1011111rem;
     height: 5.1011111rem;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 0 auto;
-}
-.c-share .share-list a div.img.weixin {
+  }
+  .c-share .share-list a div.img.weixin {
     background-image: url(../assets/images/weixin.png);
-}
-.c-share .share-list a div.img.tsina {
+  }
+  .c-share .share-list a div.img.tsina {
     background-image: url(../assets/images/weibo.png);
-}
-.c-share .share-list a div.img.qq {
+  }
+  .c-share .share-list a div.img.qq {
     background-image: url(../assets/images/qq.png);
-}
-.c-share .share-list a div.img.qzone {
+  }
+  .c-share .share-list a div.img.qzone {
     background-image: url(../assets/images/zone.png);
-}
-.c-share .share-list a span {
+  }
+  .c-share .share-list a span {
     display: block;
     width: 100%;
     height: 3.65555555rem;
@@ -243,8 +244,8 @@
     font-size: 1.25555555rem;
     text-align: center;
     color: #000;
-}
-.c-share .close {
+  }
+  .c-share .close {
     margin: 1.2rem 1.2rem 0;
     height: 3.11999rem;
     line-height: 3.11999rem;
@@ -252,18 +253,144 @@
     font-size: 1.2rem;
     border: 1px solid #999;
     border-radius: .64rem;
-}
-.bottomTips{
+  }
+  .bottomTips{
     width:100%;
     color:#666;
-}
-.roomDetail{
-  [col-6] {
-    height: 10.0999rem;
-    overflow: hidden;
-    img{
-      height: 8rem;
-      width: 100%;
+  }
+  .roomDetail{
+    [col-6] {
+      height: 11rem;
+      overflow: hidden;
+      img{
+        height: 8.5rem;
+        width: 100%;
+      }
     }
   }
+
+  .layout-rooms .roomsImg{
+    margin: .87999rem .39999rem 0 .69999rem;
+    width: 1.44rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .layout-rooms  .hotIcon,.layout-rooms  .liveIcon,.layout-rooms .yzIcon{
+    margin: .87999rem .39999rem 0 .69999rem;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .layout-rooms  .hotIcon{
+    background-image: url(../assets/images/hot.png);
+    width: 1.44rem;
+    height: 1.44rem;
+  }
+  .layout-rooms  .liveIcon{
+    background-image: url(../assets/images/live.png);
+    width: 1.44rem;
+    height: 1rem;
+  }
+  .layout-rooms .yzIcon{
+    background-image: url(../assets/images/yz.png);
+    width: 1.44rem;
+    height: 1.44rem;
+  }
+  .layout-rooms .text{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+    color: #333;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-top:.87999rem
+  }
+  .layout-rooms.live .live-online {
+    float: right;
+    font-size: .34667rem;
+    color: #999;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: .69999rem;
+  }
+  .layout-rooms.live .live-online span {
+    color: #f70;
+  }
+  .layout-rooms.live .live-online:after {
+    content: " ";
+    float: right;
+    width: 1.039999999rem;
+    height: 1.039999999rem;
+    vertical-align: middle;
+    margin: 0.469999999rem .399999rem 0;
+    background-image: url(../assets/images/download.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .layout-rooms .title .change {
+    float: right;
+    font-size: 1.04001rem;
+    color: #999;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: .57999rem;
+  }
+  .room-online{
+    position: absolute;
+    z-index: 2;
+    top: .6rem;
+    right: .6rem;
+    color: #fff;
+    font-size: 1rem;
+    .eye{
+      display: inline-block;
+      vertical-align: middle;
+      width: 1rem;
+      height: 1rem;
+      background-image: url(../assets/images/eye.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .room-nickname{
+    position: absolute;
+    z-index: 2;
+    bottom: 2.3rem;
+    left: .66666rem;
+    color: #fff;
+    font-size: .26667rem;
+    .user{
+      display: inline-block;
+      vertical-align: middle;
+      width: 1rem;
+      height: 1rem;
+      background-image: url(../assets/images/user.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      margin-top: -2px;
+    }
+  }
+  .layout-rooms .title .change:after {
+    content: " ";
+    float: right;
+    width: 1.44rem;
+    height: 1.44rem;
+    margin: .26rem .39999rem 0;
+    background-image: url(../assets/images/change.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .layout-rooms{
+    background-color: #fff;
+    margin-top: .66666rem;
+    .grid {
+      padding: 5px 2px;
+    }
+  }
+  .room-des{
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+  }
+
 }

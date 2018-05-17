@@ -1,15 +1,20 @@
-import { Component,ElementRef,ViewChild } from '@angular/core';
-import { NavController, NavParams, ToastController, Platform, ActionSheetController, Content } from 'ionic-angular';
-import { room } from '../room/room';
-import { liveList } from '../liveList/liveList';
-import { searchService } from "./searchService";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content, AlertController, ToastController, ActionSheetController } from 'ionic-angular';
+import {SearchProvider} from "../../providers/search/search";
 
+/**
+ * Generated class for the SearchPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
-  selector: 'search',
+  selector: 'page-search',
   templateUrl: 'search.html',
-  providers: [searchService]
 })
-export class search {
+export class SearchPage {
   searchLoadData: any;
   classMap: any  = ['icon-v2-num1', 'icon-v2-num2', 'icon-v2-num3', 'icon-v2-num4', 'icon-v2-num5', 'icon-v2-num6', 'icon-v2-num7', 'icon-v2-num8', 'icon-v2-num9', 'icon-v2-num10']
   searchResult: boolean = true;
@@ -34,24 +39,37 @@ export class search {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public searchService: searchService,
-    private elementRef: ElementRef,
+    public alertCtrl: AlertController,
+    public actionsheetCtrl: ActionSheetController,
     public toastCtrl: ToastController,
-    public platform: Platform,
-    public actionsheetCtrl: ActionSheetController
-    ) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.getLoadSearchData()
+    public searchProvider:SearchProvider
+  ) {
+    this.getLoadSearchData();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SearchPage');
+  }
+  getLoadSearchData() {
+    this.searchProvider.searchListData().subscribe(
+      data => {
+        this.searchLoadData = data;
+        console.log(this.searchLoadData)
+      },
+      error => {
+      }
+    );
   };
+
   search(queryWord,type,sort,limit,offset,i) {    //queryWord：搜索内容
 
-     if(queryWord == undefined || queryWord == ""){
+    if(queryWord == undefined || queryWord == ""){
       this.showLongToast();
       return ;
     }else{
       this.searchResult = false;
       if(i == undefined){
-         this.cur = 1;
+        this.cur = 1;
       }else if(i == 4 || i == 5){
         this.cur = this.cur;
       }else{
@@ -73,62 +91,78 @@ export class search {
       this.type = type;
       this.offset = offset;
 
-      this.searchService.showSearchListData(queryWord,type,sort,limit,offset).subscribe(
-          data => {
-            //抽取公共方法
-            this.valueI(i,data);
+      this.searchProvider.showSearchListData(queryWord,type,sort,limit,offset).subscribe(
+        data => {
+          //抽取公共方法
+          this.valueI(i,data);
         },
-      error => {
-      }
-    );
+        error => {
+        }
+      );
     }
-
-    //下面的样式，上面是搜索逻辑
-    if(!this.searchResult){
-        this.scssStyle();
-     }
   };
-  doInfinite(infiniteScroll,i) {
-    this.offset = this.offset +20;
-    let liveRoomsDataScroll = this.liveRoomsData;
-    setTimeout(() => {
 
-      this.search(this.queryWord,this.type,this.sort,20,this.offset,i)
-
-
-      infiniteScroll.complete();
-    }, 500);
-  };
-    searchHot(queryWord,type,sort,limit,offset,i) {
-
-      this.queryWord = queryWord;
-      this.searchResult = false;
-      this.cur = 1;
-
-      this.searchService.showSearchListData(queryWord,type,sort,limit,offset).subscribe(
-          data => {
-            this.valueI(i,data);
-        },
-      error => {
+  //判断i的值
+  valueI(i,data) {
+    //首先判定是i什么类型,切换下面的tab
+    if(i == 1 || i == undefined) {
+      this.all = true;
+      this.liveRooms = false;
+      this.liveAnchors = false;
+      this.showSearchListData = data;
+      //console.log(this.showSearchListData);
+      this.anchor = true;
+      this.live = true;
+      if(this.showSearchListData.cate.length == 0){
+        this.cate = false;
+      }else{
+        this.cate = true;
       }
-    );
-
-    //下面的样式，上面是搜索逻辑
-    if(!this.searchResult){
-        this.scssStyle();
-     }
-
+    }else if(i == 2){
+      this.all = false;
+      this.liveRooms = true;
+      this.liveAnchors = false;
+      this.liveRoomsData = data;
+      //console.log(this.liveRoomsData);
+    }else if(i == 3){
+      this.all = false;
+      this.liveRooms = false;
+      this.liveAnchors = true;
+      this.liveRoomsData = data;
+      //console.log(this.liveRoomsData);
+    }else if(i == 4){
+      for(let i=0;i<20;i++){
+        this.liveRoomsData.live.push(data.live[i]);
+      }
+    }
+    else if(i == 5){
+      for(let i=0;i<20;i++){
+        this.liveRoomsData.anchor.push(data.anchor[i]);
+      }
+    }
   };
-  getLoadSearchData() {
-    this.searchService.searchListData().subscribe(
+
+  searchHot(queryWord,type,sort,limit,offset,i) {
+
+    this.queryWord = queryWord;
+    this.searchResult = false;
+    this.cur = 1;
+
+    this.searchProvider.showSearchListData(queryWord,type,sort,limit,offset).subscribe(
       data => {
-        this.searchLoadData = data;
-        console.log(this.searchLoadData)
+        this.valueI(i,data);
       },
       error => {
       }
     );
+
   };
+  toRoom(live) {
+    this.navCtrl.push("RoomPage", {
+      item: live
+    });
+  };
+
   showLongToast() {
     let toast = this.toastCtrl.create({
       message: '请输入关键字查询',
@@ -136,71 +170,10 @@ export class search {
     });
     toast.present();
   };
-  toRoom(live) {
-    this.navCtrl.push(room, {
-      item: live
-    });
-  };
-  toLiveList(event, cate2Info) {
-    //window.localStorage.setItem("shortName",cate2Info.shortName);
-    this.navCtrl.push(liveList, {
-      item: cate2Info,
-      liveClass: cate2Info.cate2Name,
-      shortName: cate2Info.shortName
-    });
-  }
-  //判断i的值
-  valueI(i,data) {
-    //首先判定是i什么类型,切换下面的tab
-            if(i == 1 || i == undefined) {
-              this.all = true;
-              this.liveRooms = false;
-              this.liveAnchors = false;
-              this.showSearchListData = data;
-              //console.log(this.showSearchListData);
-              this.anchor = true;
-              this.live = true;
-              if(this.showSearchListData.cate.length == 0){
-                this.cate = false;
-              }else{
-                this.cate = true;
-              }
-            }else if(i == 2){
-              this.all = false;
-              this.liveRooms = true;
-              this.liveAnchors = false;
-              this.liveRoomsData = data;
-              //console.log(this.liveRoomsData);
-            }else if(i == 3){
-              this.all = false;
-              this.liveRooms = false;
-              this.liveAnchors = true;
-              this.liveRoomsData = data;
-              //console.log(this.liveRoomsData);
-            }else if(i == 4){
-              for(let i=0;i<20;i++){
-                this.liveRoomsData.live.push(data.live[i]);
-              }
-            }
-            else if(i == 5){
-              for(let i=0;i<20;i++){
-                this.liveRoomsData.anchor.push(data.anchor[i]);
-              }
-            }
-  };
-  scssStyle() {
-    if(navigator.userAgent.match(/(ios)/i)){
-            this.elementRef.nativeElement.querySelector('.search-result-app .layout-control').style.top = '7.19999rem';
-            this.elementRef.nativeElement.querySelector('.search-result-app .layout-header').style.top = '3.6799999rem';
-        }else if(navigator.userAgent.match(/(Android)/i)){
-            this.elementRef.nativeElement.querySelector('.search-result-app .layout-control').style.top = '8.94999rem';
-            this.elementRef.nativeElement.querySelector('.search-result-app .layout-header').style.top = '5.4299999rem';
-        }else{
-            this.elementRef.nativeElement.querySelector('.search-result-app .layout-control').style.top = '7.19999rem';
-            this.elementRef.nativeElement.querySelector('.search-result-app .layout-header').style.top = '3.6799999rem';
-        }
-  };
 
+  imgError(liveItem){     //图片报错的时候自动切换为默认的图片
+    liveItem.roomSrc = "./assets/images/list-item-def-thumb.gif";
+  };
   openMenu() {
     let actionSheet = this.actionsheetCtrl.create({
       title: this.sortContent,
@@ -235,8 +208,16 @@ export class search {
     actionSheet.present();
   };
 
-  imgError(liveItem){     //图片报错的时候自动切换为默认的图片
-    liveItem.roomSrc = "https://shark.douyucdn.cn/app/douyu-mobile/m-douyu-react/build/images/public/list-item-def-thumb.gif";
+  doInfinite(infiniteScroll,i) {
+    this.offset = this.offset +20;
+    let liveRoomsDataScroll = this.liveRoomsData;
+    setTimeout(() => {
+
+      this.search(this.queryWord,this.type,this.sort,20,this.offset,i)
+
+
+      infiniteScroll.complete();
+    }, 500);
   };
 
 }

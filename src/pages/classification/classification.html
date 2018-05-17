@@ -1,18 +1,23 @@
+<!--
+  Generated template for the ClassificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title text-center>直播分类</ion-title>
+    <ion-title>直播分类</ion-title>
   </ion-navbar>
+  <div class="nav-header">
+<!--    <span data-type="0" class="item navheaderItem cur" (click)="filterLive()">全部<b></b></span>-->
+    <span data-type="1" class="item navheaderItem" [class.cur]="cate1Info.checked" *ngFor="let cate1Info of cate1InfoList;let idx=index" (click)="filterLive(cate1Info,idx)">{{cate1Info.cate1Name}}<b></b></span>
+  </div>
 </ion-header>
+
 
 <ion-content>
   <div class="layout-nav">
-    <div class="nav-header">
-      <span data-type="0" class="item navheaderItem cur" (click)="filterLive()">全部<b></b></span>
-      <span data-type="1" class="item navheaderItem" *ngFor="let cate1Info of cate1InfoList;let idx=index" (click)="filterLive(cate1Info,idx)">{{cate1Info.cate1Name}}<b></b></span>
-    </div>
     <div class="nav-content">
       <a *ngFor="let cate2Info of cate2InfoList" (click)="toLiveList($event, cate2Info)">
         <div class="nav-item">
@@ -25,4 +30,5 @@
       </a>
     </div>
   </div>
+
 </ion-content>

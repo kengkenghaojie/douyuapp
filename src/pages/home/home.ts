@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import 'rxjs/add/operator/map';
-import { NavController,MenuController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HomeProvider} from "../../providers/home/home";
 
-//import { HomeService } from "./homeService";
-import { getDataListService } from '../../common/getDataListService';
-import { classification } from '../classification/classification';
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
-import { room } from '../room/room';
-import { liveList } from '../liveList/liveList';
-import { search } from '../search/search';
-
-
+@IonicPage()
 @Component({
-  selector: 'page-hello-ionic',
+  selector: 'page-home',
   templateUrl: 'home.html',
-  //providers: [HomeService]
 })
-export class home {
+export class HomePage {
   indexBanner: any[];
   hotsList: any[];
   liveList: any[];
@@ -28,14 +26,29 @@ export class home {
   temporary: number;
 
   constructor(
-  	public navCtrl: NavController,
-  	public homeService:getDataListService,
-    public menuCtrl: MenuController
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public homeProvider:HomeProvider
   ) {
-  	this.homeService.getCommonData("index/getHomeData").subscribe(
+  }
+
+  ionViewDidLoad() {
+    this.getHomeData()
+   /* this.homeProvider.test().subscribe(
       data => {
         console.log(data);
-        //this.todos = data['rows'];
+      },
+      error => {
+      }
+    );*/
+  }
+  getHomeData(ii?){
+    this.homeProvider.getCommonData("index/getHomeData").subscribe(
+      data => {
+        if(ii){
+          this.i = ii;
+        }
+        console.log(data);
         this.indexBanner = data['banner'];
         this.hotsList = data["hotList"][this.i].data;
         this.liveList = data['liveList'];
@@ -46,20 +59,8 @@ export class home {
       error => {
       }
     );
-  }
-fenlei() {
-  this.menuCtrl.close();
-    this.navCtrl.push(classification);   //跳转到分类
   };
-  search() {
-    this.menuCtrl.close();
-    this.navCtrl.push(search);
-  };
-  toRoom(hot) {
-    this.navCtrl.push(room, {
-      item: hot
-    });
-  };
+
   change() {      //随机改变最热
     this.temporary = this.i
     this.i = Math.round(Math.random()*4+1)-1;
@@ -70,45 +71,32 @@ fenlei() {
       this.i = Math.round(Math.random()*4+1)-1;
       this.changeI(this.i);
     }else{
-       this.changeI(this.i);
+      this.changeI(this.i);
     }
   };
-   changeI(ii){
-     console.log(ii)
-     this.homeService.getCommonData("index/getHomeData").subscribe(
-      data => {
-        this.hotsList = data["hotList"][ii].data;
-      },
-      error => {
-      }
-    );
-   };
-   toLiveList(event, cate2Info) {
-    this.navCtrl.push(liveList, {
+  changeI(ii){
+    this.getHomeData(ii);
+  };
+
+  toRoom(hot) {
+    this.navCtrl.push("RoomPage", {
+      item: hot
+    });
+  };
+  toLiveList(event, cate2Info) {
+    this.navCtrl.push("LiveListPage", {
       item: "",
       liveClass: ""
     });
   };
+
   doRefresh(refresher) {    //下拉刷新
     console.log('Begin async operation', refresher);
 
     setTimeout(() => {
-      this.homeService.getCommonData("index/getHomeData").subscribe(
-        data => {
-          console.log(data);
-          //this.todos = data['rows'];
-          this.indexBanner = data['banner'];
-          this.hotsList = data["hotList"][this.i].data;
-          this.liveList = data['liveList'];
-          this.yzList = data['yzList'];
-          this.liveCount = data['liveCount'];
-          this.mixList = data['mixList']
-        },
-        error => {
-        }
-      );
-      console.log('Async operation has ended');
+      this.getHomeData()
       refresher.complete();
     }, 2000);
   }
+
 }

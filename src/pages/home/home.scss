@@ -1,58 +1,46 @@
-page-hello-ionic {
-
-}
-.logo{
+page-home {
+  .logo{
     float: left;
     margin: .2666666665rem 0 0 .26666667rem;
     width: 6.1rem;
     height: 3rem;
     background-image: url(../assets/images/icon.png);
     background-size: 16.3333rem 10rem;
-}
-.classification{
-	font-size:1.2rem;
-	display: inline-block;
-    vertical-align: middle;
-    color: #999;
-    padding-left: .35rem
-}
-.ion-md-menu:before {
-    display: inline-block;
-    vertical-align: middle;
-    color: #999;
-}
-.slides {
-    height: 11.5555555rem;
-}
-.layout-rooms .roomsImg{
+  }
+
+  .slides {
+    height: 12rem;
+  }
+
+  .layout-rooms .roomsImg{
     margin: .87999rem .39999rem 0 .69999rem;
     width: 1.44rem;
     display: inline-block;
     vertical-align: middle;
-}
-.layout-rooms  .hotIcon,.layout-rooms  .liveIcon,.layout-rooms .yzIcon{
+  }
+  .layout-rooms  .hotIcon,.layout-rooms  .liveIcon,.layout-rooms .yzIcon{
     margin: .87999rem .39999rem 0 .69999rem;
     display: inline-block;
     vertical-align: middle;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-}
-.layout-rooms  .hotIcon{
+  }
+  .layout-rooms  .hotIcon{
     background-image: url(../assets/images/hot.png);
     width: 1.44rem;
     height: 1.44rem;
-}
-.layout-rooms  .liveIcon{
+  }
+  .layout-rooms  .liveIcon{
     background-image: url(../assets/images/live.png);
     width: 1.44rem;
     height: 1rem;
-}
-.layout-rooms .yzIcon{
+  }
+  .layout-rooms .yzIcon{
     background-image: url(../assets/images/yz.png);
     width: 1.44rem;
     height: 1.44rem;
-}
-.layout-rooms .text{
+  }
+  .layout-rooms .text{
     display: inline-block;
     vertical-align: middle;
     font-size: 1.4rem;
@@ -60,19 +48,19 @@ page-hello-ionic {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     margin-top:.87999rem
-}
-.layout-rooms.live .live-online {
+  }
+  .layout-rooms.live .live-online {
     float: right;
     font-size: .34667rem;
     color: #999;
     height: 2rem;
     line-height: 2rem;
-  margin-top: .69999rem;
-}
-.layout-rooms.live .live-online span {
+    margin-top: .69999rem;
+  }
+  .layout-rooms.live .live-online span {
     color: #f70;
-}
-.layout-rooms.live .live-online:after {
+  }
+  .layout-rooms.live .live-online:after {
     content: " ";
     float: right;
     width: 1.039999999rem;
@@ -82,16 +70,16 @@ page-hello-ionic {
     background-image: url(../assets/images/download.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.layout-rooms .title .change {
+  }
+  .layout-rooms .title .change {
     float: right;
     font-size: 1.04001rem;
     color: #999;
     height: 2rem;
     line-height: 2rem;
-  margin-top: .57999rem;
-}
-.layout-rooms .title .change:after {
+    margin-top: .57999rem;
+  }
+  .layout-rooms .title .change:after {
     content: " ";
     float: right;
     width: 1.44rem;
@@ -100,26 +88,25 @@ page-hello-ionic {
     background-image: url(../assets/images/change.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.layout-rooms{
-    background-color: #fff;
-    margin-top: .66666rem;
-  .grid {
-    padding: 5px 2px;
   }
-}
-.hot .grid,.live .grid{
-  padding-top: 0;
-}
-.room-online {
+  .layout-rooms{
+    margin-top: .66666rem;
+    .grid {
+      padding: 5px 2px;
+    }
+  }
+  .hot .grid,.live .grid{
+    padding-top: 0;
+  }
+  .room-online {
     position: absolute;
     z-index: 2;
     top: .8rem;
     right: .666666rem;
     color: #fff;
     font-size: .26667rem;
-}
-.room-online .eye{
+  }
+  .room-online .eye{
     display: inline-block;
     vertical-align: middle;
     width: 1rem;
@@ -127,25 +114,25 @@ page-hello-ionic {
     background-image: url(../assets/images/eye.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.room-nickname{
+  }
+  .room-nickname{
     position: absolute;
     z-index: 2;
     bottom: 2.22222rem;
     left: .66666rem;
     color: #fff;
     font-size: .26667rem;
-}
-.room-nickname .user,.yz .user{
+  }
+  .room-nickname .user,.yz .user{
     display: inline-block;
     vertical-align: top;
     width: 1rem;
-     height: 1rem;
+    height: 1rem;
     background-image: url(../assets/images/user.png);
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-.room-des {
+  }
+  .room-des {
     width: 100%;
     height: 1.2rem;
     line-height: 1.2rem;
@@ -155,21 +142,21 @@ page-hello-ionic {
     word-break: break-all;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-.yzname {
+  }
+  .yzname {
     width:50%;
     overflow: hidden;
     word-break: break-all;
     white-space: nowrap;
     text-overflow: ellipsis;
     float:left;
-}
-.yzaddress{
+  }
+  .yzaddress{
     float: right;
     text-align: right;
     width:50%;
-}
-.yzaddress .address{
+  }
+  .yzaddress .address{
     height: 1.15rem;
     width: .95rem;
     background-image: url(../assets/images/address.png);
@@ -178,47 +165,6 @@ page-hello-ionic {
     display: inline-block;
     vertical-align: middle;
     margin-top:-.2rem;
-}
+  }
 
-
-
-//IOS
-.toolbar-ios ion-title {
-    padding: 0 10px 1px;
-}
-.ion-ios-menu:before {
-    display: inline-block;
-    vertical-align: middle;
-    color: #999;
-}
-.ion-ios-search:before {
-  display: inline-block;
-  vertical-align: middle;
-  color: #999;
-}
-.content-ios {
-    background-color: #eee;
-}
-.bar-button-ios {
-  float: left;
-}
-.ios .menu-content-reveal {
-  box-shadow: none;
-}
-
-//安卓
-.content-md {
-    background-color: #eee;
-}
-.bar-button-menutoggle-md {
-  float: left;
-  margin: 0;
-}
-.toolbar-title-md {
-   padding: 0;
-}
-.ion-md-search:before {
-  display: inline-block;
-  vertical-align: middle;
-  color: #999;
 }

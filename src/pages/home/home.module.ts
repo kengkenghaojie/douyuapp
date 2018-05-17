@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
-import { IonicModule } from 'ionic-angular';
-
-
-import { home } from './home';
-import { homeMenu } from './homeMenu/homeMenu';
-
-
+import { IonicPageModule } from 'ionic-angular';
+import { TranslateModule } from '@ngx-translate/core';
+import { HomePage } from './home';
+import {HomeProvider} from "../../providers/home/home";
+import {HomeMenuPageModule} from "./home-menu/home-menu.module";
 
 @NgModule({
-  imports: [
-    IonicModule,
-  ],
   declarations: [
-    home,homeMenu
+    HomePage,
   ],
-  entryComponents:[
-    home,homeMenu
-  ]
+  imports: [
+    IonicPageModule.forChild(HomePage),
+    TranslateModule.forChild(),
+    HomeMenuPageModule
+  ],
+  exports: [
+    HomePage,
+  ],
+  providers:[HomeProvider]
 })
-export class homeModule {}
+export class HomePageModule {}

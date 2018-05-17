@@ -1,12 +1,12 @@
-.layout-nav {
+page-classification {
+  .layout-nav {
     top: 0;
     z-index: 6;
     width: 100%;
-}
-.nav-header {
+  }
+  .nav-header {
     max-width: 100%;
     height: 4rem;
-    background-color: #fff;
     overflow-x: auto;
     overflow-y: hidden;
     box-sizing: border-box;
@@ -15,8 +15,8 @@
     position: fixed;
     top: 3.66666666rem;
     left:0;
-}
-.nav-header .item {
+  }
+  .nav-header .item {
     position: relative;
     display: inline-block;
     white-space: nowrap;
@@ -25,12 +25,12 @@
     font-size: 1.3rem;
     color: #676767;
     line-height: 4rem;
-}
-.nav-header .item.cur {
+  }
+  .nav-header .item.cur {
     color: #fa7122;
     font-weight: 700;
-}
-.nav-header .item.cur b {
+  }
+  .nav-header .item.cur b {
     position: absolute;
     width: 100%;
     display: block;
@@ -38,45 +38,36 @@
     left: 0;
     bottom: 1rem;
     background-color: #fa7122;
-}
-.nav-header .item b {
+  }
+  .nav-header .item b {
     display: none;
-}
-.nav-content {
-   margin-top: 4.66666666rem;
-   overflow-y: auto;
-}
-.nav-content a {
+  }
+  .nav-content {
+    margin-top: 4.66666666rem;
+    overflow-y: auto;
+  }
+  .nav-content a {
     color: #000;
     font-size: .32rem;
-}
-.nav-content .nav-item {
+  }
+  .nav-content .nav-item {
     float: left;
     width: 33.333333%;
-   border-right: 1px dashed #ddd;
+    border-right: 1px dashed #ddd;
     border-bottom: 1px dashed #ddd;
     overflow: hidden;
     text-align: center;
     padding-bottom: .8rem;
-}
-.nav-content .nav-item img {
+  }
+  .nav-content .nav-item img {
     margin-top: .66666666rem;
     margin-bottom: .666666666rem;
     width: 4.62666666rem;
     height: 4.62666666rem;
     border-radius: 50%;
-}
-.nav-content .nav-item span{
+  }
+  .nav-content .nav-item span{
     height: 1.334399999rem;
     display: inline-block;
-}
-
-
-//安卓
-.back-button.show-back-button {
-    position: absolute;
-    z-index: 1111;
-}
-.back-button-md{
-    top: 1.2rem;
+  }
 }
