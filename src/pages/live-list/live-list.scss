@@ -1,0 +1,156 @@
+page-live-list {
+  .live-title {
+    width: 100%;
+    height: 3.333333rem;
+    color: #424242;
+    line-height: 1.13333333rem;
+    background-color: #fff
+  }
+  .live-title span img {
+    margin: .87999rem .39999rem 0 .69999rem;
+    width: 1.44rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .live-title span label{
+    margin: .87999rem .39999rem 0 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .live-title .shortName {
+    background-color: #F4F4F4;
+    margin: .8999999rem .39999rem 0 0;
+    border-radius: .99525rem;
+    color: #FA7122;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.3rem;
+    font-size: .95rem;
+  }
+
+  .layout-rooms .roomsImg{
+    margin: .87999rem .39999rem 0 .69999rem;
+    width: 1.44rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .layout-rooms  .hotIcon,.layout-rooms  .liveIcon,.layout-rooms .yzIcon{
+    margin: .87999rem .39999rem 0 .69999rem;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .layout-rooms  .hotIcon{
+    background-image: url(../assets/images/hot.png);
+    width: 1.44rem;
+    height: 1.44rem;
+  }
+  .layout-rooms  .liveIcon{
+    background-image: url(../assets/images/live.png);
+    width: 1.44rem;
+    height: 1rem;
+  }
+  .layout-rooms .yzIcon{
+    background-image: url(../assets/images/yz.png);
+    width: 1.44rem;
+    height: 1.44rem;
+  }
+  .layout-rooms .text{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+    color: #333;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-top:.87999rem
+  }
+  .layout-rooms.live .live-online {
+    float: right;
+    font-size: .34667rem;
+    color: #999;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: .69999rem;
+  }
+  .layout-rooms.live .live-online span {
+    color: #f70;
+  }
+  .layout-rooms.live .live-online:after {
+    content: " ";
+    float: right;
+    width: 1.039999999rem;
+    height: 1.039999999rem;
+    vertical-align: middle;
+    margin: 0.469999999rem .399999rem 0;
+    background-image: url(../assets/images/download.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .layout-rooms .title .change {
+    float: right;
+    font-size: 1.04001rem;
+    color: #999;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: .57999rem;
+  }
+  .room-online{
+    position: absolute;
+    z-index: 2;
+    top: .6rem;
+    right: .6rem;
+    color: #fff;
+    font-size: 1rem;
+    .eye{
+      display: inline-block;
+      vertical-align: middle;
+      width: 1rem;
+      height: 1rem;
+      background-image: url(../assets/images/eye.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .room-nickname{
+    position: absolute;
+    z-index: 2;
+    bottom: 2.3rem;
+    left: .66666rem;
+    color: #fff;
+    font-size: .26667rem;
+    .user{
+      display: inline-block;
+      vertical-align: middle;
+      width: 1rem;
+      height: 1rem;
+      background-image: url(../assets/images/user.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      margin-top: -2px;
+    }
+  }
+  .layout-rooms .title .change:after {
+    content: " ";
+    float: right;
+    width: 1.44rem;
+    height: 1.44rem;
+    margin: .26rem .39999rem 0;
+    background-image: url(../assets/images/change.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .layout-rooms{
+    background-color: #fff;
+    .grid {
+      padding: 0 2px 5px 2px;
+    }
+  }
+  .room-des{
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+  }
+}
