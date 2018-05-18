@@ -1,0 +1,16 @@
+
+<ion-content>
+  <div class="chat">
+    <div class="c-chat">
+      <div class="c-chat-tip">
+        <span>系统消息 </span>斗鱼官方倡导绿色直播，对直播内容进行24小时在线巡查。
+      </div>
+
+      <p class="dm-item" *ngFor="let item of chatData">
+        <span>{{item.nickname}}：</span>
+        {{item.content}}
+      </p>
+    </div>
+
+  </div>
+</ion-content>

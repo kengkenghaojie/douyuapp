@@ -10,11 +10,6 @@
     <ion-title>{{roomData?.nickname}}的直播间</ion-title>
   </ion-navbar>
 
-</ion-header>
-
-
-<ion-content>
-
   <div class="video-area">
     <div class="player">
       <!-- <video id="dy-video-player" class="video-js" type="application/x-mpegURL" webkit-playsinline="" controls="controls" preload="auto" autoplay="autoplay" [src]="hls_url" style="margin-top: 0px;">
@@ -42,63 +37,39 @@
     </div>
   </div>
 
-  <div id="infoArea" class="info-area">
-    <div class="info-room">
-      <img class="dy-photo" [src]="roomData?.avatar" alt="">
-      <div class="dy-info">
-        <p class="dy-name-content">主播：<span id="owner_name" class="dy-name">{{roomData?.nickname}}</span></p>
-        <p class="online-content" id="online">
-          共<span class="online">{{roomData?.online}}</span>人正在观看
-        </p>
-      </div>
-    </div>
-    <div class="info-handle">
-      <div id="sendBar" class="hd-item hd-send" (click)="showAlert()">
-        <span class="icon"></span>
-        <!-- <img class="icon" src="../assets/images/hd-send.png" alt=""> -->发弹幕
-        <b class="split-line"></b>
-      </div>
-      <div id="focusRoom" class="hd-item hd-focus" (click)="showAlert()">
-        <span class="icon"></span>
-        <!-- <img class="icon" src="../assets/images/hd-focus.png" alt=""> -->关注
-        <b class="split-line"></b>
-      </div>
-      <div id="shareRoom" class="hd-item hd-share" (click)="shareCtrl(1)">
-        <span class="icon"></span>
-        <!-- <img class="icon" src="../assets/images/hd-share.png" alt=""> -->分享
-      </div>
-    </div>
-  </div>
+  <ion-segment [(ngModel)]="segmentModel" color="primary">
+    <ion-segment-button class="segment-activated" value="chat">
+      <span>聊天</span>
+    </ion-segment-button>
+    <ion-segment-button value="anchor">
+      <span>主播</span>
+    </ion-segment-button>
+    <ion-segment-button value="broadcast">
+      <span>相关直播</span>
+    </ion-segment-button>
+  </ion-segment>
 
-  <div class="layout-rooms live roomDetail">
-    <div class="title">
-      <span class="liveIcon"></span>
-      <span class="text">正在直播</span>
+</ion-header>
+
+
+<ion-content>
+<page-room-chat *ngIf="segmentModel == 'chat'" [roomData]="roomData"></page-room-chat>
+<page-room-anchor *ngIf="segmentModel == 'anchor'" [roomData]="roomData"></page-room-anchor>
+<page-room-broadcast  *ngIf="segmentModel == 'broadcast'" [roomData]="roomData"></page-room-broadcast>
+<!--  <div class="info-handle">
+    <div id="sendBar" class="hd-item hd-send" (click)="showAlert()">
+      <span class="icon"></span>
+      &lt;!&ndash; <img class="icon" src="../assets/images/hd-send.png" alt=""> &ndash;&gt;发弹幕
+      <b class="split-line"></b>
     </div>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6 *ngFor="let live of cate2InfoList" (click)="toRoom(live)">
-    <span class="room-online">
-      <span class="eye"></span>
-      {{live.hn}}
-    </span>
-          <img [src]="live.roomSrc" error-img>
-          <span class="room-nickname">
-      <span class="user"></span>
-
-      {{live.nickname}}
-      </span>
-          <div class="room-des">{{live.nickname}}</div>
-        </ion-col>
-        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!bottomTips">
-          <ion-infinite-scroll-content
-            loadingSpinner="bubbles"
-            loadingText="正在加载更多数据...">
-          </ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-        <p text-center *ngIf="bottomTips" class="bottomTips">已经到底了</p>
-      </ion-row>
-    </ion-grid>
-  </div>
-
+    <div id="focusRoom" class="hd-item hd-focus" (click)="showAlert()">
+      <span class="icon"></span>
+      &lt;!&ndash; <img class="icon" src="../assets/images/hd-focus.png" alt=""> &ndash;&gt;关注
+      <b class="split-line"></b>
+    </div>
+    <div id="shareRoom" class="hd-item hd-share" (click)="shareCtrl(1)">
+      <span class="icon"></span>
+      &lt;!&ndash; <img class="icon" src="../assets/images/hd-share.png" alt=""> &ndash;&gt;分享
+    </div>
+  </div>-->
 </ion-content>

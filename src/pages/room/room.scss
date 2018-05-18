@@ -1,8 +1,6 @@
 page-room {
   .video-area {
     width: 100%;
-    position: fixed;
-    z-index: 1111;
     background-color: black;
   }
   .video-area .player {
@@ -100,10 +98,8 @@ page-room {
   }
 
   .info-area {
-    height: 9.06666667rem;
     background-color: #fff;
     padding: 0 .99999999rem;
-    margin-top:19rem;
   }
   .info-area .info-room {
     height: 4.8800000001rem;
@@ -260,7 +256,7 @@ page-room {
   }
   .roomDetail{
     [col-6] {
-      height: 11rem;
+      height: 12rem;
       overflow: hidden;
       img{
         height: 8.5rem;
@@ -356,7 +352,7 @@ page-room {
   .room-nickname{
     position: absolute;
     z-index: 2;
-    bottom: 2.3rem;
+    bottom: 3.3rem;
     left: .66666rem;
     color: #fff;
     font-size: .26667rem;
@@ -391,6 +387,33 @@ page-room {
   .room-des{
     font-size: 1.2rem;
     line-height: 1.25rem;
+  }
+
+  .segment{
+    .segment-button{
+      border: none;
+      height: 40px;
+      border-radius: 0!important;
+      span{
+        display: inline-block;
+        line-height: 40px;
+        position: relative;
+        width: 70%;
+        height: 100%;
+      }
+    }
+    .segment-activated{
+      span{
+        &::after{
+          position: absolute;
+          content: "";
+          height: 3px;
+          width: 100%;
+          left: 0;
+          bottom: 0;
+        }
+      }
+    }
   }
 
 }

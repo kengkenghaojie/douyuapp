@@ -4,6 +4,10 @@ import { RoomPage } from './room';
 import {RoomProvider} from "../../providers/room/room";
 import {SearchProvider} from "../../providers/search/search";
 import {DirectivesModule} from "../../directives/directives.module";
+import {ComponentsModule} from "../../components/components.module";
+import {RoomChatPageModule} from "./room-chat/room-chat.module";
+import {RoomAnchorPageModule} from "./room-anchor/room-anchor.module";
+import {RoomBroadcastPageModule} from "./room-broadcast/room-broadcast.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +15,11 @@ import {DirectivesModule} from "../../directives/directives.module";
   ],
   imports: [
     IonicPageModule.forChild(RoomPage),
-    DirectivesModule
+    DirectivesModule,
+    ComponentsModule,
+    RoomChatPageModule,
+    RoomAnchorPageModule,
+    RoomBroadcastPageModule
   ],
   providers:[RoomProvider,SearchProvider]
 })

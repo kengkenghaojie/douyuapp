@@ -2,6 +2,8 @@
   $light-color: #fff;
   $bg-color: #f8f8f8;
   $font-color:#333;
+  $avtive-color: #f50;
+  $line-color: #ebebeb;
   ion-content {
     background-color: #fff;
   }
@@ -50,5 +52,21 @@
   }
   .nav-header{
     background-color: white;
+  }
+  .segment{
+    border-bottom: 1px solid $line-color;
+    .segment-button{
+      color: $font-color;
+    }
+    .segment-activated{
+      color:  $avtive-color!important;
+      background-color: #fff!important;
+      span{
+        color:  $avtive-color;
+        &::after{
+          background-color:  $avtive-color;
+        }
+      }
+    }
   }
 }

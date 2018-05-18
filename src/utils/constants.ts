@@ -11,3 +11,5 @@ export const roomsData = 'http://open.douyucdn.cn/api/RoomApi/room/' ;
 export const searchListData = 'https://m.douyu.com/search/getTodayTopData?limit=10&isAjax=1';
 
 export const searchKeyData = 'https://m.douyu.com/search/getData?sk=';
+
+export const roomsAllData = 'https://m.douyu.com/room/';

@@ -28,6 +28,8 @@ export class RoomPage {
   limit:number=20;
   offset:number=0;
   @ViewChild(Content) content: Content;
+  segmentsArray = ['chat','anchor','broadcast'];
+  segmentModel: string = this.segmentsArray[0];
 
   constructor(
     public navCtrl: NavController,

@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HomePage } from './home';
 import {HomeProvider} from "../../providers/home/home";
 import {HomeMenuPageModule} from "./home-menu/home-menu.module";
+import {PipesModule} from "../../pipes/pipes.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import {HomeMenuPageModule} from "./home-menu/home-menu.module";
   imports: [
     IonicPageModule.forChild(HomePage),
     TranslateModule.forChild(),
-    HomeMenuPageModule
+    HomeMenuPageModule,
+    PipesModule
   ],
   exports: [
     HomePage,

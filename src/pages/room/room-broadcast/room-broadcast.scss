@@ -1,0 +1,81 @@
+page-room-broadcast {
+  .scroll-content{
+    padding: .75rem .75rem 0;
+    .depend-item {
+      position: relative;
+      width: 100%;
+      margin-bottom: .75rem;
+      overflow: hidden;
+      .post {
+        float: left;
+        position: relative;
+        overflow: hidden;
+        width: 50%;
+        .pic {
+          position: relative;
+          background-image: url(../images/thumbb10bbe.png);
+          border-radius: .16rem;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: 50%;
+          overflow: hidden;
+          &::before{
+            content: " ";
+            display: block;
+            padding-top: 56.2%;
+          }
+        }
+      }
+      .info {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        box-sizing: border-box;
+        padding-left: .75rem;
+        .des {
+          font-size: 1.3rem;
+          color: #333;
+          white-space: normal;
+          line-height: 1.2;
+          word-break: break-all;
+          margin-top: .45rem;
+        }
+        .nick {
+          position: absolute;
+          bottom: 2.64rem;
+          width: 100%;
+          font-size: .96rem;
+          color: #999;
+          white-space: normal;
+          word-break: break-all;
+        }
+        .num {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          font-size: .96rem;
+          color: #999;
+          margin-bottom: .75rem;
+          line-height: 1.2rem;
+          span {
+            color: #f70;
+          }
+        }
+      }
+      .open-app {
+        position: absolute;
+        right: .75rem;
+        top: 0;
+        height: 1.2rem;
+        line-height: 1.25rem;
+        padding: 0 .39999rem;
+        color: #f70;
+        font-size: .75rem;
+        background: #fff1e3;
+        border-radius: .6rem;
+      }
+    }
+  }
+}

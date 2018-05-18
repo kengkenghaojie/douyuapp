@@ -67,7 +67,7 @@
       <span class="liveIcon"></span>
       <!-- <img class="roomsImg" src="../../assets/images/live.png"> -->
       <span class="text">正在直播</span>
-      <span class="live-online" (click)="toLiveList($event)">当前<span>{{liveCount}}</span>个直播</span>
+      <span class="live-online" (click)="toLiveList($event)">当前<span>{{liveCount | tenThousand}}</span>个直播</span>
     </div>
     <ion-grid>
       <ion-row>

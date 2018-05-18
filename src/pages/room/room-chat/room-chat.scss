@@ -1,0 +1,35 @@
+page-room-chat {
+  .chat{
+    height: 100%;
+    .c-chat{
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      box-sizing: border-box;
+      padding-top: .75rem;
+      padding-bottom: 1.6rem;
+      .c-chat-tip {
+        margin: 0 .85rem .85rem;
+        padding: .4rem .4rem;
+        background-color: #eee;
+        color: #333;
+        white-space: normal;
+        span {
+          color: #999;
+        }
+      }
+      .dm-item{
+        white-space: normal;
+        color: #666;
+        margin-top: 0;
+        margin-bottom: .85rem;
+        padding: 0 .85rem;
+        span{
+          color: #999;
+        }
+      }
+    }
+  }
+}

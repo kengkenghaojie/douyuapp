@@ -1,0 +1,47 @@
+
+<ion-content>
+  <div id="infoArea" class="info-area">
+      <div class="info-room">
+        <img class="dy-photo" [src]="roomInfo?.avatar" alt="">
+        <div class="dy-info">
+          <p class="dy-name-content">主播：<span id="owner_name" class="dy-name">{{roomInfo?.nickname}}</span></p>
+          <p class="online-content" id="online">
+            <span class="online">{{roomInfo?.cate2Name}} </span> 热度 {{roomInfo?.online}}
+          </p>
+        </div>
+      </div>
+    <div class="des">{{roomInfo?.notice}}</div>
+
+    </div>
+
+    <div class="layout-rooms live roomDetail">
+      <div class="title">
+        <span class="liveIcon"></span>
+        <span class="text">正在直播</span>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let live of cate2InfoList">
+      <span class="room-online">
+        <span class="eye"></span>
+        {{live.view_num}}
+      </span>
+            <img [src]="live.video_pic" error-img>
+            <span class="room-nickname">
+        <span class="user"></span>
+
+        {{live.author}}
+        </span>
+            <div class="room-des">{{live.title}}</div>
+          </ion-col>
+         <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!bottomTips">
+            <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="正在加载更多数据...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+          <p text-center *ngIf="bottomTips" class="bottomTips">已经到底了</p>-->
+        </ion-row>
+      </ion-grid>
+    </div>
+</ion-content>
