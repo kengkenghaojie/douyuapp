@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{roomData?.nickname}}的直播间</ion-title>
+    <ion-title><span [innerHtml]='roomData?.nickname'></span>的直播间</ion-title>
   </ion-navbar>
 
   <div class="video-area">
