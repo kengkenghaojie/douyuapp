@@ -131,12 +131,13 @@ page-home {
     background-image: url(../assets/images/user.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    margin-top: -1px;
   }
   .room-des {
     width: 100%;
     height: 1.2rem;
     line-height: 1.2rem;
-    font-size: .32rem;
+    font-size: 1rem;
     color: #333;
     overflow: hidden;
     word-break: break-all;
@@ -164,7 +165,6 @@ page-home {
     background-size: 100% 100%;
     display: inline-block;
     vertical-align: middle;
-    margin-top:-.2rem;
   }
 
 }

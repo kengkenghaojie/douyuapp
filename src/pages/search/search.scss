@@ -27,7 +27,6 @@ page-search {
     margin-top: .56rem;
     text-align: center;
     outline: none;
-    font-size: .4rem;
     color: #333;
     background-color: transparent;
   }
@@ -37,7 +36,7 @@ page-search {
   .search-app .layout-content .hot-title {
     padding-left: .8rem;
     line-height: 4.40001rem;
-    font-size: .37333rem;
+    font-size: 1.1rem;
     color: #333;
     border-bottom: 1px solid #eee;
     margin-top: 0;
@@ -71,34 +70,35 @@ page-search {
 
   }
   .icon-v2-num1{
-    background-position: 34.2rem 1.6999rem;
+    background-position: 34.3rem 1.619rem;
   }
   .icon-v2-num2{
-    background-position: 31.999999rem 1.65999rem;
+    background-position: 32rem 1.619rem;
   }
   .icon-v2-num3{
-    background-position: 29.74999rem 1.61999rem;
+    background-position: 29.74999rem 1.619rem;
   }
   .icon-v2-num4{
-    background-position: 30.88999rem 1.61999rem;
+    background-position: 30.88999rem 1.619rem;
   }
   .icon-v2-num5{
-    background-position: 26.400999rem 1.61999rem;
+    background-position: 26.400999rem 1.619rem;
   }
   .icon-v2-num6{
-    background-position: 28.59999rem 1.61999rem;
+    background-position: 28.59999rem 1.619rem;
   }
   .icon-v2-num7{
-    background-position: 27.49999rem 1.61999rem;
+    background-position: 27.49999rem 1.619rem;
   }
   .icon-v2-num8{
-    background-position: 35.39999rem 1.61999rem;
+    background-position: 35.39999rem 1.619rem;
   }
   .icon-v2-num9{
-    background-position: 36.39999rem 1.61999rem;
+    background-position: 36.5rem 1.619rem;
   }
   .icon-v2-num10{
-    background-position: 33.11111rem 1.61999rem;
+    background-position: 33.11718559999999999999rem 1.61999rem;
+    width: 1.0rem;
   }
 
   /*******结果*****/
@@ -203,6 +203,7 @@ page-search {
   .search-result-app .layout-content .content-block .title .more {
     float: right;
     color: #999;
+    padding-right: .39999rem;
   }
   .search-result-app .layout-content .content-block .title .more:after {
     content: " ";
@@ -214,10 +215,10 @@ page-search {
     background-image: url(../assets/images/download.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    margin-top: .095rem;
   }
   .search-result-app .layout-content .content-block .content .anchor-item {
     width: 24.3%;
-    height: 8.55999rem;
     padding: 0;
     padding: 0 .92001rem .39999rem;
     position: relative;
@@ -239,11 +240,11 @@ page-search {
     word-break: break-all;
     font-size: .879999rem;
     color: #999;
-    margin-top: .39999rem;
+    margin-top: 0rem;
     margin-bottom:0;
   }
   .search-result-app .layout-content .content-block .content .anchor-item p.nickname {
-    font-size: .63rem;
+    font-size: 1.1rem;
     color: #333;
     margin-top: .639999rem;
   }
@@ -485,8 +486,8 @@ page-search {
     display: inline-block;
     margin-left: .3999rem;
     vertical-align: middle;
-    width: .44001rem;
-    height: .24rem;
+    width: .5rem;
+    height: .5rem;
     background-image: url(../assets/images/abuot.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;

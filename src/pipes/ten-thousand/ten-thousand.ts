@@ -15,7 +15,7 @@ export class TenThousandPipe implements PipeTransform {
   transform(value: number, ...args) {
     if(value > 10000){
       let result = (value / 10000).toFixed(0);
-      return result;
+      return result + "万";
     }else {
       return value;
     }

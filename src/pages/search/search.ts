@@ -170,6 +170,16 @@ export class SearchPage {
     });
     toast.present();
   };
+  toLiveList(event, cate2Info) {
+    //window.localStorage.setItem("shortName",cate2Info.shortName);
+    console.log(cate2Info)
+    this.navCtrl.push("LiveListPage", {
+      item: cate2Info,
+      liveClass: cate2Info.cate2Name,
+      shortName: cate2Info.shortName,
+      cate_id : cate2Info.cate2Id
+    });
+  }
 
   imgError(liveItem){     //图片报错的时候自动切换为默认的图片
     liveItem.roomSrc = "./assets/images/list-item-def-thumb.gif";
