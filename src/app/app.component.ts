@@ -7,6 +7,7 @@ import { FirstRunPage,MainPage} from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ThemeProvider} from "../providers/theme/theme";
+import {AppUpdate} from "@ionic-native/app-update";
 //import { home } from '../pages/home/home';
 
 
@@ -26,13 +27,14 @@ export class MyApp {
     public menu: MenuController,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    public themeProvider:ThemeProvider
+    public themeProvider:ThemeProvider,
+    private appUpdate: AppUpdate
   ) {
     this.themeProvider.getActiveTheme().subscribe(val => this.selectedTheme = val);
     this.initializeApp();
 
     // set our app's pages
-    //this.checkAppUpdate()
+
   }
 
   initializeApp() {
@@ -41,11 +43,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.checkAppUpdate()
     });
   }
   checkAppUpdate(){
     const UPDATE_URL = 'http://192.168.0.169:8001/update.xml';
-    //this.appUpdate.checkAppUpdate(UPDATE_URL);
+    this.appUpdate.checkAppUpdate(UPDATE_URL);
+    console.log("aaa"+UPDATE_URL);
   }
 
 

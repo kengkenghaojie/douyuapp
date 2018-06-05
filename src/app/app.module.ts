@@ -26,6 +26,7 @@ import { SearchProvider } from '../providers/search/search';
 import { ClassificationProvider } from '../providers/classification/classification';
 import { LiveListProvider } from '../providers/live-list/live-list';
 import { ThemeProvider } from '../providers/theme/theme';
+import {AppUpdate} from "@ionic-native/app-update";
 
 /**
  * native 插件
@@ -33,6 +34,7 @@ import { ThemeProvider } from '../providers/theme/theme';
 const NATIVE_PLUGINS = [
   SplashScreen,
   StatusBar,
+  AppUpdate
 ];
 
 @NgModule({
