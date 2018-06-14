@@ -28,6 +28,10 @@
     </ion-refresher-content>
   </ion-refresher>
 
+ <!-- <span style="font-size: 3rem" (click)="useLanguage('en')">1</span>
+  <span style="font-size: 3rem" (click)="useLanguage('zh')">2</span>
+  {{ 'home.title' | translate }}-->
+
   <ion-slides pager>
     <ion-slide *ngFor="let indexBannerItem of indexBanner" (click)="toRoom(indexBannerItem.room)">
       <img [src]="indexBannerItem.pic_url">

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TranslateModule } from '@ngx-translate/core';
 import { HomePage } from './home';
 import {HomeProvider} from "../../providers/home/home";
 import {HomeMenuPageModule} from "./home-menu/home-menu.module";
 import {PipesModule} from "../../pipes/pipes.module";
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [

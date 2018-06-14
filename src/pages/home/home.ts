@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomeProvider} from "../../providers/home/home";
-
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Generated class for the HomePage page.
  *
@@ -28,7 +28,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public homeProvider:HomeProvider
+    public homeProvider:HomeProvider,
+    private translate: TranslateService
   ) {
   }
 
@@ -97,6 +98,12 @@ export class HomePage {
       this.getHomeData()
       refresher.complete();
     }, 2000);
+  };
+
+  useLanguage(language: string) {
+    console.log(language)
+    this.translate.setDefaultLang(language);
+    //this.translate.use(language);
   }
 
 }
